@@ -87,7 +87,6 @@ pnpm install
 ```bash
 pnpm dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the result.
 
 ## 📄 License
 This project is licensed under the MIT License.
