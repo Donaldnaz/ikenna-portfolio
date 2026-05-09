@@ -2,14 +2,14 @@
 
 A sleek, modern, and high-performance portfolio website built with **Next.js**, **Tailwind CSS**, and **Contentlayer**. This site showcases my work as a **Cloud & AI Engineer** based in Ontario, Canada, currently working at **Vosyn** (Jan 2025 - Present).
 
-## 🚀 Professional Profile
+## 🏆 Top Skills
 
-**Cloud & AI Engineer** specialized in:
-- Multi-cloud Infrastructure (AWS, Azure, GCP)
-- Infrastructure as Code (Terraform, CloudFormation)
-- CI/CD Automation (Reduced deployment times by 75%)
-- Serverless Architectures (Lambda, Step Functions, EventBridge)
-- Data & AI (BigQuery, Vertex AI, Python, FastAPI)
+*   **Cloud Platforms:** AWS, Azure, GCP
+*   **Infrastructure as Code:** Terraform, CloudFormation
+*   **Containers & Orchestration:** Docker, Kubernetes, Cloud Run
+*   **DevOps & CI/CD:** GitHub Actions, CI/CD Automation
+*   **AI & Backend:** Python, FastAPI, Vertex AI, LLM Integration
+*   **Serverless:** AWS Lambda, GCP Cloud Functions, EventBridge, Pub/Sub
 
 ## 🏗️ Architecture & Tech Stack
 
