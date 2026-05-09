@@ -1,33 +1,93 @@
-<div align="center">
-    <a href="https://chronark.com"><h1 align="center">chronark.com</h1></a>
+# Ikenna Anasieze | Cloud & AI Engineer Portfolio
 
-My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=chronark.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
+A sleek, modern, and high-performance portfolio website built with **Next.js**, **Tailwind CSS**, and **Contentlayer**. This site showcases my work as a **Cloud & AI Engineer** based in Ontario, Canada, currently working at **Vosyn** (Jan 2025 - Present).
 
-</div>
+## 🚀 Professional Profile
 
-<br/>
+**Cloud & AI Engineer** specialized in:
+- Multi-cloud Infrastructure (AWS, Azure, GCP)
+- Infrastructure as Code (Terraform, CloudFormation)
+- CI/CD Automation (Reduced deployment times by 75%)
+- Serverless Architectures (Lambda, Step Functions, EventBridge)
+- Data & AI (BigQuery, Vertex AI, Python, FastAPI)
 
+## 🏗️ Architecture & Tech Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/upstash/clone?demo-title=Next.js%20Portfolio%20with%20Pageview%20Counter&demo-description=Portfolio%20site%20with%20pageview%20counter%2C%20built%20with%20Next.js%2013%20App%20Router%2C%20Contentlayer%2C%20and%20Upstash%20Redis.&demo-url=https%3A%2F%2Fchronark.com%2F&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F1DA8n5a6WaP9p1FXf9LmUY%2Fc6264fa2732355787bf657df92dda8a1%2FCleanShot_2023-04-17_at_14.17.37.png&project-name=Next.js%20Portfolio%20with%20Pageview%20Counter&repository-name=nextjs-portfolio-pageview-counter&repository-url=https%3A%2F%2Fgithub.com%2Fchronark%2Fchronark.com&from=templates&integration-ids=oac_V3R1GIpkoJorr6fqyiwdhl17)
+```mermaid
+graph TD
+    subgraph "Frontend & UI"
+        NextJS[Next.js 14]
+        Tailwind[Tailwind CSS]
+        Framer[Framer Motion]
+        Lucide[Lucide Icons]
+    end
 
-## Running Locally
+    subgraph "Content Management"
+        MDX[MDX Projects]
+        Contentlayer[Contentlayer]
+    end
 
+    subgraph "Infrastructure & Cloud"
+        AWS[AWS]
+        GCP[GCP]
+        Terraform[Terraform IaC]
+        K8s[Kubernetes / Docker]
+    end
 
-```sh-session
-git clone https://github.com/chronark/chronark.com.git
-cd chronark.com
+    subgraph "AI & Backend"
+        FastAPI[Python / FastAPI]
+        VertexAI[Vertex AI]
+        Actions[GitHub Actions CI/CD]
+    end
+
+    NextJS --> Contentlayer
+    Contentlayer --> MDX
+    NextJS --> Tailwind
+    NextJS --> Framer
+    
+    %% Skills Mapping
+    AWS --- Terraform
+    GCP --- Terraform
+    K8s --- Docker
+    FastAPI --- VertexAI
 ```
 
+## 🛠️ Tech Stack Details
 
-Create a `.env` file similar to [`.env.example`](https://github.com/chronark/chronark.com/blob/main/.env.example).
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Content:** [Contentlayer](https://www.contentlayer.dev/) with MDX
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Deployment:** [Vercel](https://vercel.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-Then install dependencies and run the development server:
-```sh-session
+## 📂 Project Highlights
+
+1.  **Disaster Recovery Architecture**: High availability and failover design on AWS.
+2.  **Event-Driven Cloud System**: Asynchronous workflows using EventBridge and Cloud Functions.
+3.  **Microservice Architecture for AI Workloads**: Scalable containerized services for AI model serving.
+
+## 📧 Contact
+- **Email:** ikenna.anasieze@gmail.com
+- **LinkedIn:** [ikenna-anasieze](https://www.linkedin.com/in/ikenna-anasieze/)
+- **GitHub:** [Donaldnaz](https://github.com/Donaldnaz)
+
+## 🏃 Running Locally
+
+### Prerequisites
+- Node.js (Latest LTS)
+- pnpm (`npm install -g pnpm`)
+
+### Installation
+```bash
 pnpm install
+```
+
+### Development
+```bash
 pnpm dev
 ```
+Open [http://localhost:3000](http://localhost:3000) to view the result.
 
-
-## Cloning / Forking
-
-Please remove all of my personal information (projects, images, etc.) before deploying your own version of this site.
+## 📄 License
+This project is licensed under the MIT License.

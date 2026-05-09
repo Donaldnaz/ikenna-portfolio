@@ -3,22 +3,23 @@ import { Inter } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import { ChatWidget } from "./components/chat-widget";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "Anasieze Ikenna | Cloud AI Engineer",
+    template: "%s | Anasieze Ikenna",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
   openGraph: {
-    title: "chronark.com",
+    title: "Anasieze Ikenna | Cloud AI Engineer",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
+    url: "https://anasiezeikenna.com",
+    siteName: "Anasieze Ikenna",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://anasiezeikenna.com/og.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Anasieze Ikenna",
     card: "summary_large_image",
   },
   icons: {
@@ -70,6 +71,7 @@ export default function RootLayout({
           }`}
       >
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
