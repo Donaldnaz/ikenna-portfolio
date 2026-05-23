@@ -11,10 +11,4 @@ export const auth = createNeonAuth({
 	cookies: {
 		secret: process.env.NEON_AUTH_COOKIE_SECRET || "a-very-long-and-secure-secret-key-that-is-32-chars",
 	},
-	socialProviders: {
-		google: {
-			clientId: process.env.GOOGLE_CLIENT_ID!,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-		},
-	},
 });
