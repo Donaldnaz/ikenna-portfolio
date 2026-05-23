@@ -1,7 +1,8 @@
 import { Mistral } from "@mistralai/mistralai";
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
+// Removed Edge runtime to ensure compatibility with other project dependencies (like Upstash Redis)
+// export const runtime = "edge";
 
 const apiKey = process.env.MISTRAL_API_KEY || "";
 const client = new Mistral({ apiKey });
@@ -89,9 +90,9 @@ export async function POST(req: Request) {
 		const readableStream = new ReadableStream({
 			async start(controller) {
 				for await (const chunk of stream) {
-					const content = chunk.data.choices[0]?.delta?.content || "";
-					if (content) {
-						controller.enqueue(encoder.encode(content));
+					const chunkContent = chunk.data.choices[0]?.delta?.content;
+					if (typeof chunkContent === "string" && chunkContent) {
+						controller.enqueue(encoder.encode(chunkContent));
 					}
 				}
 				controller.close();
