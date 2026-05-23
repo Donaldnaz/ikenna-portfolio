@@ -4,8 +4,8 @@ export default auth.middleware();
 
 export const config = {
 	matcher: [
-		// Protect specific routes if needed, or just let the middleware run globally
-		// For now, we'll let it run on everything to handle session sync
-		"/((?!api|_next/static|_next/image|favicon.ico).*)",
+		// Protect specific routes if needed
+		// Explicitly include root and other subroutes, excluding public assets and api
+		"/((?!api|_next/static|_next/image|favicon.ico|$).*)", 
 	],
 };
