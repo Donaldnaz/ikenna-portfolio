@@ -5,24 +5,30 @@ import { Card } from "../components/card";
 const skillCategories = [
 	{
 		title: "Cloud & Infrastructure",
-		skills: ["AWS", "Azure", "GCP", "Terraform", "CloudFormation", "IaC"]
+		skills: ["AWS", "Azure", "GCP", "Terraform", "CloudFormation", "IaC"],
 	},
 	{
 		title: "Serverless & Messaging",
-		skills: ["Lambda", "Step Functions", "EventBridge", "Pub/Sub", "API Gateway"]
+		skills: [
+			"Lambda",
+			"Step Functions",
+			"EventBridge",
+			"Pub/Sub",
+			"API Gateway",
+		],
 	},
 	{
 		title: "Containers & Orchestration",
-		skills: ["Docker", "Kubernetes", "Cloud Run", "ECR", "Artifact Registry"]
+		skills: ["Docker", "Kubernetes", "Cloud Run", "ECR", "Artifact Registry"],
 	},
 	{
 		title: "Data & AI",
-		skills: ["Python", "BigQuery", "SQL", "Vertex AI", "FastAPI"]
+		skills: ["Python", "BigQuery", "SQL", "Vertex AI", "FastAPI"],
 	},
 	{
 		title: "DevOps & Reliability",
-		skills: ["CI/CD", "GitHub Actions", "IAM", "CloudWatch", "Observability"]
-	}
+		skills: ["CI/CD", "GitHub Actions", "IAM", "CloudWatch", "Observability"],
+	},
 ];
 
 export default function Skills() {
@@ -35,7 +41,8 @@ export default function Skills() {
 						Skills
 					</h2>
 					<p className="mt-4 text-zinc-400">
-						Technical expertise in cloud architecture, AI platform engineering, and DevOps.
+						Technical expertise in cloud architecture, AI platform engineering,
+						and DevOps.
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-800" />
@@ -49,7 +56,7 @@ export default function Skills() {
 								</h3>
 								<ul className="flex flex-wrap gap-2 mt-4">
 									{category.skills.map((skill) => (
-										<li 
+										<li
 											key={skill}
 											className="px-3 py-1 text-xs font-medium border rounded-full text-zinc-400 border-zinc-500 bg-zinc-900 group-hover:text-zinc-200 group-hover:border-zinc-200 duration-500"
 										>

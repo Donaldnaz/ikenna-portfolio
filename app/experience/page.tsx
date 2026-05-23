@@ -7,15 +7,16 @@ const experiences = [
 		title: "Cloud & AI Engineer",
 		company: "Vosyn",
 		period: "Jan 2025 - Present",
-		description: "Architecting and deploying multi-cloud solutions (AWS, GCP, Azure) for AI-driven platforms, focusing on scalability and operational excellence.",
+		description:
+			"Architecting and deploying multi-cloud solutions (AWS, GCP, Azure) for AI-driven platforms, focusing on scalability and operational excellence.",
 		highlights: [
 			"Automated infrastructure provisioning using Terraform and CloudFormation, ensuring consistency across environments.",
 			"Designed and implemented high-performance CI/CD pipelines, reducing deployment times by 75%.",
 			"Re-architected legacy systems into modern cloud-managed services to optimize costs and performance.",
 			"Deployed and scaled AI workloads using Vertex AI and custom microservice architectures.",
-			"Configured comprehensive monitoring and observability stacks using CloudWatch and Cloud Monitoring."
-		]
-	}
+			"Configured comprehensive monitoring and observability stacks using CloudWatch and Cloud Monitoring.",
+		],
+	},
 ];
 
 export default function Experience() {
@@ -28,7 +29,8 @@ export default function Experience() {
 						Experience
 					</h2>
 					<p className="mt-4 text-zinc-400">
-						My professional journey in cloud engineering and AI platform development.
+						My professional journey in cloud engineering and AI platform
+						development.
 					</p>
 				</div>
 				<div className="w-full h-px bg-zinc-800" />
@@ -48,12 +50,13 @@ export default function Experience() {
 								<h4 className="text-lg font-medium text-zinc-300">
 									{exp.company}
 								</h4>
-								<p className="text-zinc-400">
-									{exp.description}
-								</p>
+								<p className="text-zinc-400">{exp.description}</p>
 								<ul className="space-y-2">
 									{exp.highlights.map((highlight, i) => (
-										<li key={i} className="flex gap-2 text-sm text-zinc-400 group-hover:text-zinc-200">
+										<li
+											key={i}
+											className="flex gap-2 text-sm text-zinc-400 group-hover:text-zinc-200"
+										>
 											<span className="text-zinc-600">•</span>
 											<span>{highlight}</span>
 										</li>

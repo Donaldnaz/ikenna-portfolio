@@ -6,73 +6,75 @@ import { Analytics } from "./components/analytics";
 import { ChatWidget } from "./components/chat-widget";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Anasieze Ikenna | Cloud AI Engineer",
-    template: "%s | Anasieze Ikenna",
-  },
-  description: "Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
-  openGraph: {
-    title: "Anasieze Ikenna | Cloud AI Engineer",
-    description:
-      "Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
-    url: "https://anasiezeikenna.com",
-    siteName: "Anasieze Ikenna",
-    images: [
-      {
-        url: "https://anasiezeikenna.com/og.png",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  twitter: {
-    title: "Anasieze Ikenna",
-    card: "summary_large_image",
-  },
-  icons: {
-    shortcut: "/favicon.png",
-  },
+	title: {
+		default: "Anasieze Ikenna | Cloud AI Engineer",
+		template: "%s | Anasieze Ikenna",
+	},
+	description:
+		"Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
+	openGraph: {
+		title: "Anasieze Ikenna | Cloud AI Engineer",
+		description:
+			"Cloud AI Engineer focused on resilient cloud infrastructure, AI platform engineering, and DevOps automation.",
+		url: "https://anasiezeikenna.com",
+		siteName: "Anasieze Ikenna",
+		images: [
+			{
+				url: "https://anasiezeikenna.com/og.png",
+				width: 1920,
+				height: 1080,
+			},
+		],
+		locale: "en-US",
+		type: "website",
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
+	},
+	twitter: {
+		title: "Anasieze Ikenna",
+		card: "summary_large_image",
+	},
+	icons: {
+		shortcut: "/favicon.png",
+	},
 };
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+	subsets: ["latin"],
+	variable: "--font-inter",
 });
 
 const calSans = LocalFont({
-  src: "../public/fonts/CalSans-SemiBold.ttf",
-  variable: "--font-calsans",
+	src: "../public/fonts/CalSans-SemiBold.ttf",
+	variable: "--font-calsans",
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
-      <head>
-        <Analytics />
-      </head>
-      <body
-        className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
-          }`}
-      >
-        {children}
-        <ChatWidget />
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
+			<head>
+				<Analytics />
+			</head>
+			<body
+				className={`bg-black ${
+					process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+				}`}
+			>
+				{children}
+				<ChatWidget />
+			</body>
+		</html>
+	);
 }
