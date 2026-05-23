@@ -3,6 +3,7 @@ import { Github, Mail, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
+import { CommentSection } from "../components/comments";
 
 const socials = [
 	{
@@ -29,10 +30,10 @@ export default function Example() {
 	return (
 		<div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16">
+			<div className="container flex flex-col items-center justify-center min-h-screen px-4 mx-auto pb-24">
+				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-3 lg:gap-16 mb-24">
 					{socials.map((s) => (
-						<Card>
+						<Card key={s.label}>
 							<Link
 								href={s.href}
 								target="_blank"
@@ -56,6 +57,10 @@ export default function Example() {
 							</Link>
 						</Card>
 					))}
+				</div>
+
+				<div className="w-full max-w-4xl mx-auto border-t border-zinc-800 pt-16">
+					<CommentSection />
 				</div>
 			</div>
 		</div>
