@@ -18,6 +18,7 @@ export default function Particles({
 	ease = 50,
 	refresh = false,
 }: ParticlesProps) {
+	const [mounted, setMounted] = useState(false);
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
 	const context = useRef<CanvasRenderingContext2D | null>(null);
@@ -28,6 +29,7 @@ export default function Particles({
 	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
 	useEffect(() => {
+		setMounted(true);
 		if (canvasRef.current) {
 			context.current = canvasRef.current.getContext("2d");
 		}
@@ -228,7 +230,7 @@ export default function Particles({
 
 	return (
 		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas ref={canvasRef} />
+			{mounted && <canvas ref={canvasRef} />}
 		</div>
 	);
 }
