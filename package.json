@@ -9,9 +9,10 @@
     "fmt": "pnpm rome check . --apply-unsafe && pnpm rome format . --write"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.61.3",
+    "@clerk/nextjs": "^7.4.1",
     "@google/generative-ai": "^0.24.1",
     "@mistralai/mistralai": "^2.2.5",
-    "@neondatabase/auth": "0.4.1-beta",
     "@neondatabase/serverless": "^1.1.0",
     "@next/font": "^13.5.4",
     "@next/mdx": "^13.5.4",

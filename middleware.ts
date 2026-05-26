@@ -1,11 +1,12 @@
-import { auth } from "@/util/auth";
+import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export default auth.middleware();
+export default clerkMiddleware();
 
 export const config = {
-	matcher: [
-		// Protect specific routes if needed
-		// Explicitly include root and other subroutes, excluding public assets and api
-		"/((?!api|_next/static|_next/image|favicon.ico|$).*)", 
-	],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };

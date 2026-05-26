@@ -2,10 +2,12 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useAuth, SignInButton, UserButton } from "@clerk/nextjs";
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
 	const [isIntersecting, setIntersecting] = useState(true);
+    const { isLoaded, isSignedIn } = useAuth();
 
 	useEffect(() => {
 		if (!ref.current) return;
@@ -27,7 +29,7 @@ export const Navigation: React.FC = () => {
 				}`}
 			>
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex justify-between gap-8">
+					<div className="flex justify-between gap-8 items-center">
 						<Link
 							href="/about"
 							className="duration-200 text-zinc-400 hover:text-zinc-100"
@@ -58,12 +60,19 @@ export const Navigation: React.FC = () => {
 						>
 							Contact
 						</Link>
-						<Link
-							href="/login"
-							className="duration-200 text-zinc-400 hover:text-zinc-100"
-						>
-							Login
-						</Link>
+						
+                        {/* Clerk Auth Buttons */}
+                        {isLoaded && (
+                            !isSignedIn ? (
+                                <SignInButton mode="modal">
+                                    <button className="duration-200 text-zinc-400 hover:text-zinc-100">
+                                        Login
+                                    </button>
+                                </SignInButton>
+                            ) : (
+                                <UserButton afterSignOutUrl="/" />
+                            )
+                        )}
 					</div>
 
 					<Link

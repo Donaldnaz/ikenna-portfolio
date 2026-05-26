@@ -37,3 +37,6 @@ next-env.d.ts
 
 .contentlayer.env
 .contentlayer
+
+# clerk configuration (can include secrets)
+/.clerk/
