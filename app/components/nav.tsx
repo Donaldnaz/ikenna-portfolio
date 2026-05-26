@@ -70,7 +70,7 @@ export const Navigation: React.FC = () => {
                                     </button>
                                 </SignInButton>
                             ) : (
-                                <UserButton afterSignOutUrl="/" />
+                                <UserButton />
                             )
                         )}
 					</div>
