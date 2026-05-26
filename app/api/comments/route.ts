@@ -1,10 +1,11 @@
 import { sql } from "@/util/db";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
 
 export async function GET() {
 	try {
 		const comments = await sql`
-      SELECT id, full_name, email, content, created_at 
+      SELECT id, full_name, email, content, image_url, created_at 
       FROM comments 
       ORDER BY created_at DESC
     `;
@@ -20,7 +21,11 @@ export async function GET() {
 
 export async function POST(req: Request) {
 	try {
-		const { full_name, email, content } = await req.json();
+		const formData = await req.formData();
+		const full_name = formData.get("full_name") as string;
+		const email = formData.get("email") as string;
+		const content = formData.get("content") as string;
+		const file = formData.get("image") as File | null;
 
 		if (!full_name || !email || !content) {
 			return NextResponse.json(
@@ -29,9 +34,18 @@ export async function POST(req: Request) {
 			);
 		}
 
+		let image_url = null;
+
+		if (file && file.size > 0) {
+			const blob = await put(file.name, file, {
+				access: "public",
+			});
+			image_url = blob.url;
+		}
+
 		await sql`
-      INSERT INTO comments (full_name, email, content)
-      VALUES (${full_name}, ${email}, ${content})
+      INSERT INTO comments (full_name, email, content, image_url)
+      VALUES (${full_name}, ${email}, ${content}, ${image_url})
     `;
 
 		return NextResponse.json({ message: "Comment added successfully" });

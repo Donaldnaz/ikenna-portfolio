@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Loader2, MessageSquare, User, Mail, Send } from "lucide-react";
+import { Loader2, MessageSquare, User, Mail, Send, Image as ImageIcon } from "lucide-react";
 
 interface Comment {
 	id: number;
 	full_name: string;
 	email: string;
 	content: string;
+	image_url: string | null;
 	created_at: string;
 }
 
@@ -18,6 +19,7 @@ export const CommentSection = () => {
 		email: "",
 		content: "",
 	});
+	const [file, setFile] = useState<File | null>(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isFetching, setIsFetching] = useState(true);
 
@@ -45,15 +47,21 @@ export const CommentSection = () => {
 			return;
 
 		setIsLoading(true);
+		const form = new FormData();
+		form.append("full_name", formData.full_name);
+		form.append("email", formData.email);
+		form.append("content", formData.content);
+		if (file) form.append("image", file);
+
 		try {
 			const response = await fetch("/api/comments", {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(formData),
+				body: form,
 			});
 
 			if (response.ok) {
 				setFormData({ full_name: "", email: "", content: "" });
+				setFile(null);
 				await fetchComments();
 			} else {
 				throw new Error("Failed to post comment");
@@ -128,6 +136,17 @@ export const CommentSection = () => {
 						className="w-full bg-zinc-800 border border-zinc-700 rounded-xl py-2 px-4 text-sm text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all resize-none"
 					/>
 				</div>
+				<div className="space-y-2">
+					<label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+						<ImageIcon size={14} /> Upload Image (Optional)
+					</label>
+					<input
+						type="file"
+						accept="image/*"
+						onChange={(e) => setFile(e.target.files?.[0] || null)}
+						className="text-sm text-zinc-300 w-full bg-zinc-800 p-2 rounded-xl"
+					/>
+				</div>
 				<button
 					type="submit"
 					disabled={isLoading}
@@ -172,6 +191,13 @@ export const CommentSection = () => {
 							<p className="text-zinc-300 text-sm leading-relaxed">
 								{comment.content}
 							</p>
+							{comment.image_url && (
+								<img
+									src={comment.image_url}
+									alt="Comment attachment"
+									className="mt-4 rounded-xl max-h-60 w-auto"
+								/>
+							)}
 						</div>
 					))
 				) : (

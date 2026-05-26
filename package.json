@@ -17,6 +17,7 @@
     "@next/font": "^13.5.4",
     "@next/mdx": "^13.5.4",
     "@upstash/redis": "^1.23.3",
+    "@vercel/blob": "^2.4.0",
     "contentlayer": "^0.3.4",
     "framer-motion": "^10.16.4",
     "groq-sdk": "^1.2.0",
