@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Mistral } from "@mistralai/mistralai";
+import { NextResponse } from "next/server";
 
-// Note: We are using Gemini for the chatbot, as configured in the previous functional step.
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+const apiKey = process.env.MISTRAL_API_KEY || "";
+const client = new Mistral({ apiKey });
 
 const SYSTEM_PROMPT = `
 You are Ikenna Anasieze's AI Clone. You act and speak exactly like him based on his professional background and personality.
@@ -60,37 +60,53 @@ TECHNICAL SKILLS:
 - Networking/Security: IAM, KMS, VPC, Security Groups, SSL/TLS, CloudWatch, Grafana.
 
 INSTRUCTIONS:
-- Answer questions about Ikenna's work, skills, and experience accurately.
+- Answer questions about Ikenna's work, skills, and experience accurately and simply.
 - Always respond in the first person ("I did...", "My experience includes...").
 - Use the detailed experience from Vosyn and VisualPath to provide specific, professional examples.
 - If asked to hire him or contact him, provide his email: ikenna.anasieze@gmail.com.
-- RESPONSE GUIDELINES (FOR STRUCTURE):
-    - **Be Concise:** Never use 50 words when 20 will do.
-    - **Use Markdown:** Use bullet points for lists and bold text for key terms or project names.
-    - **Structure:** Start with a direct answer, followed by 2-3 bullet points if detail is needed.
+
+RESPONSE GUIDELINES (FOR STRUCTURE & BREVITY):
+- **Maximum Length:** Keep ALL responses to exactly one sentence.
+- **Be Ultra-Concise:** No filler, no follow-up details unless absolutely necessary.
+- **Visual Clarity:** Do not use line breaks or lists.
 `;
 
-export async function POST(req: NextRequest) {
-  try {
-    const { messages } = await req.json();
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash", // Using flash for speed
-      systemInstruction: SYSTEM_PROMPT
-    });
+export async function POST(req: Request) {
+	try {
+		const { messages } = await req.json();
 
-    const history = messages
-      .slice(0, -1)
-      .map((m: any) => ({
-        role: m.role === "user" ? "user" : "model",
-        parts: [{ text: m.content }],
-      }));
+		const stream = await client.chat.stream({
+			model: process.env.MISTRAL_MODEL || "mistral-tiny",
+			messages: [
+				{ role: "system", content: SYSTEM_PROMPT },
+				...messages.map((m: any) => ({
+					role: m.role,
+					content: m.content,
+				})),
+			],
+		});
 
-    const chat = model.startChat({ history });
-    const result = await chat.sendMessage(messages[messages.length - 1].content);
-    
-    return NextResponse.json({ content: result.response.text() });
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return NextResponse.json({ error: "Failed to fetch response" }, { status: 500 });
-  }
+		const encoder = new TextEncoder();
+		const readableStream = new ReadableStream({
+			async start(controller) {
+				for await (const chunk of stream) {
+					const chunkContent = chunk.data.choices[0]?.delta?.content;
+					if (typeof chunkContent === "string" && chunkContent) {
+						controller.enqueue(encoder.encode(chunkContent));
+					}
+				}
+				controller.close();
+			},
+		});
+
+		return new Response(readableStream, {
+			headers: { "Content-Type": "text/plain; charset=utf-8" },
+		});
+	} catch (error) {
+		console.error("Mistral API Error:", error);
+		return NextResponse.json(
+			{ error: "Failed to fetch response from AI Clone" },
+			{ status: 500 },
+		);
+	}
 }
