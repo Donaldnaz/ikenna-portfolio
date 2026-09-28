@@ -42,43 +42,42 @@
             --mark: #5c6b82;
             --mark-opacity: 0.34;
             color-scheme: light;
-            --bg:
-                radial-gradient(720px 420px at 0% 0%, rgba(186, 214, 214, 0.22), transparent 62%),
-                radial-gradient(640px 380px at 100% 8%, rgba(206, 204, 216, 0.2), transparent 58%),
-                linear-gradient(165deg, #f7f6f3 0%, #eef2f3 48%, #f3f1f4 100%);
+            --surface: #e7eef2;
+            --bg: #e7eef2;
+            --raised: 8px 8px 16px rgba(163, 177, 198, 0.55), -8px -8px 16px rgba(255, 255, 255, 0.9);
+            --raised-sm: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.85);
+            --pressed: inset 4px 4px 8px rgba(163, 177, 198, 0.45), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
             --selection-bg: #0e6b66;
             --selection-fg: #fff;
-            --header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.74));
-            --nav-hover: rgba(255, 255, 255, 0.55);
-            --menu-summary-bg: rgba(255, 255, 255, 0.7);
-            --menu-summary-border: rgba(255, 255, 255, 0.9);
-            --menu-summary-bg-mobile: #fff;
-            --menu-summary-border-mobile: rgba(22, 32, 51, 0.14);
-            --menu-bg: rgba(255, 255, 255, 0.94);
-            --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.48));
-            --glass-fallback: rgba(255, 255, 255, 0.92);
-            --chip-bg: rgba(255, 255, 255, 0.72);
-            --chip-border: rgba(255, 255, 255, 0.9);
-            --chip-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 10px rgba(46, 62, 98, 0.04);
-            --tag-bg: rgba(20, 152, 143, 0.12);
-            --visit-bg: linear-gradient(180deg, #1aa197, #0e6b66);
+            --header-bg: var(--surface);
+            --nav-hover: var(--surface);
+            --menu-summary-bg: var(--surface);
+            --menu-summary-border: transparent;
+            --menu-summary-bg-mobile: var(--surface);
+            --menu-summary-border-mobile: transparent;
+            --menu-bg: var(--surface);
+            --glass-bg: var(--surface);
+            --glass-fallback: var(--surface);
+            --chip-bg: var(--surface);
+            --chip-border: transparent;
+            --chip-shadow: var(--raised-sm);
+            --tag-bg: var(--surface);
+            --visit-bg: #14988f;
             --visit-fg: #fff;
-            --portrait-bg:
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9), transparent 42%),
-                linear-gradient(160deg, rgba(224, 242, 241, 0.9), rgba(237, 233, 254, 0.85));
+            --visit-shadow: 6px 6px 12px rgba(14, 107, 102, 0.38), -4px -4px 10px rgba(255, 255, 255, 0.55);
+            --portrait-bg: var(--surface);
             --orbit-circle: #8aabb0;
             --orbit-square: #d5d3dc;
             --divider: rgba(22, 32, 51, 0.08);
-            --level-bg: rgba(14, 107, 102, 0.1);
+            --level-bg: var(--surface);
             --mark-fg: #7c4a03;
-            --mark-bg: linear-gradient(180deg, #fff7e6, #fde68a);
+            --mark-bg: var(--surface);
             --mark-azure-fg: #1d4ed8;
-            --mark-azure-bg: linear-gradient(180deg, #eff6ff, #bfdbfe);
-            --toggle-bg: rgba(255, 255, 255, 0.7);
-            --toggle-border: rgba(22, 32, 51, 0.14);
+            --mark-azure-bg: var(--surface);
+            --toggle-bg: var(--surface);
+            --toggle-border: transparent;
             --toggle-fg: #162033;
-            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 152, 143, 0.28), transparent 68%);
-            --field-line: rgba(22, 32, 51, 0.055);
+            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 152, 143, 0.12), transparent 68%);
         }
 
         html[data-theme="dark"] {
@@ -91,50 +90,49 @@
             --violet: #d5deea;
             --mark: #b7c8d8;
             --mark-opacity: 0.4;
-            --bg:
-                radial-gradient(720px 420px at 0% 0%, rgba(20, 90, 86, 0.28), transparent 62%),
-                radial-gradient(640px 380px at 100% 8%, rgba(70, 78, 110, 0.22), transparent 58%),
-                linear-gradient(165deg, #0c1219 0%, #121a24 48%, #10161e 100%);
+            --surface: #1a222c;
+            --bg: #1a222c;
+            --raised: 8px 8px 16px rgba(0, 0, 0, 0.45), -6px -6px 14px rgba(255, 255, 255, 0.04);
+            --raised-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -3px -3px 8px rgba(255, 255, 255, 0.04);
+            --pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.45), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
             --selection-bg: #14988f;
             --selection-fg: #041412;
-            --header-bg: linear-gradient(180deg, rgba(24, 36, 52, 0.94), rgba(16, 24, 36, 0.88));
-            --nav-hover: rgba(255, 255, 255, 0.08);
-            --menu-summary-bg: rgba(255, 255, 255, 0.08);
-            --menu-summary-border: rgba(255, 255, 255, 0.14);
-            --menu-summary-bg-mobile: rgba(22, 34, 48, 0.96);
-            --menu-summary-border-mobile: rgba(255, 255, 255, 0.16);
-            --menu-bg: rgba(14, 22, 32, 0.98);
-            --glass: rgba(20, 30, 44, 0.72);
-            --glass-strong: rgba(24, 36, 52, 0.92);
-            --line: rgba(186, 214, 214, 0.16);
+            --header-bg: var(--surface);
+            --nav-hover: var(--surface);
+            --menu-summary-bg: var(--surface);
+            --menu-summary-border: transparent;
+            --menu-summary-bg-mobile: var(--surface);
+            --menu-summary-border-mobile: transparent;
+            --menu-bg: var(--surface);
+            --glass: var(--surface);
+            --glass-strong: var(--surface);
+            --line: transparent;
             --line-ink: rgba(232, 238, 246, 0.1);
-            --shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
-            --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.32);
-            --inset: inset 0 1px 0 rgba(255, 255, 255, 0.07);
-            --glass-bg: linear-gradient(180deg, rgba(32, 46, 64, 0.82), rgba(16, 26, 38, 0.68));
-            --glass-fallback: rgba(16, 26, 38, 0.96);
-            --chip-bg: rgba(255, 255, 255, 0.08);
-            --chip-border: rgba(255, 255, 255, 0.12);
-            --chip-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 10px rgba(0, 0, 0, 0.22);
-            --tag-bg: rgba(126, 239, 230, 0.14);
-            --visit-bg: linear-gradient(180deg, #1aa197, #0e6b66);
+            --shadow: var(--raised);
+            --shadow-soft: var(--raised-sm);
+            --inset: var(--pressed);
+            --glass-bg: var(--surface);
+            --glass-fallback: var(--surface);
+            --chip-bg: var(--surface);
+            --chip-border: transparent;
+            --chip-shadow: var(--raised-sm);
+            --tag-bg: var(--surface);
+            --visit-bg: #14988f;
             --visit-fg: #041412;
-            --portrait-bg:
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08), transparent 42%),
-                linear-gradient(160deg, rgba(20, 60, 58, 0.9), rgba(36, 32, 58, 0.85));
+            --visit-shadow: 6px 6px 14px rgba(0, 0, 0, 0.45), -4px -4px 10px rgba(255, 255, 255, 0.05);
+            --portrait-bg: var(--surface);
             --orbit-circle: #6e8e96;
             --orbit-square: #3a4454;
             --divider: rgba(232, 238, 246, 0.12);
-            --level-bg: rgba(126, 239, 230, 0.12);
+            --level-bg: var(--surface);
             --mark-fg: #f0c56a;
-            --mark-bg: linear-gradient(180deg, #3a2e14, #6b5420);
+            --mark-bg: var(--surface);
             --mark-azure-fg: #bfdbfe;
-            --mark-azure-bg: linear-gradient(180deg, #172554, #1e3a8a);
-            --toggle-bg: rgba(255, 255, 255, 0.08);
-            --toggle-border: rgba(255, 255, 255, 0.16);
+            --mark-azure-bg: var(--surface);
+            --toggle-bg: var(--surface);
+            --toggle-border: transparent;
             --toggle-fg: #e8eef6;
-            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.42), transparent 68%);
-            --field-line: rgba(186, 214, 214, 0.07);
+            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.14), transparent 68%);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -148,50 +146,49 @@
                 --violet: #d5deea;
                 --mark: #b7c8d8;
                 --mark-opacity: 0.4;
-                --bg:
-                    radial-gradient(720px 420px at 0% 0%, rgba(20, 90, 86, 0.28), transparent 62%),
-                    radial-gradient(640px 380px at 100% 8%, rgba(70, 78, 110, 0.22), transparent 58%),
-                    linear-gradient(165deg, #0c1219 0%, #121a24 48%, #10161e 100%);
+                --surface: #1a222c;
+                --bg: #1a222c;
+                --raised: 8px 8px 16px rgba(0, 0, 0, 0.45), -6px -6px 14px rgba(255, 255, 255, 0.04);
+                --raised-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -3px -3px 8px rgba(255, 255, 255, 0.04);
+                --pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.45), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
                 --selection-bg: #14988f;
                 --selection-fg: #041412;
-                --header-bg: linear-gradient(180deg, rgba(24, 36, 52, 0.94), rgba(16, 24, 36, 0.88));
-                --nav-hover: rgba(255, 255, 255, 0.08);
-                --menu-summary-bg: rgba(255, 255, 255, 0.08);
-                --menu-summary-border: rgba(255, 255, 255, 0.14);
-                --menu-summary-bg-mobile: rgba(22, 34, 48, 0.96);
-                --menu-summary-border-mobile: rgba(255, 255, 255, 0.16);
-                --menu-bg: rgba(14, 22, 32, 0.98);
-                --glass: rgba(20, 30, 44, 0.72);
-                --glass-strong: rgba(24, 36, 52, 0.92);
-                --line: rgba(186, 214, 214, 0.16);
+                --header-bg: var(--surface);
+                --nav-hover: var(--surface);
+                --menu-summary-bg: var(--surface);
+                --menu-summary-border: transparent;
+                --menu-summary-bg-mobile: var(--surface);
+                --menu-summary-border-mobile: transparent;
+                --menu-bg: var(--surface);
+                --glass: var(--surface);
+                --glass-strong: var(--surface);
+                --line: transparent;
                 --line-ink: rgba(232, 238, 246, 0.1);
-                --shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
-                --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.32);
-                --inset: inset 0 1px 0 rgba(255, 255, 255, 0.07);
-                --glass-bg: linear-gradient(180deg, rgba(32, 46, 64, 0.82), rgba(16, 26, 38, 0.68));
-                --glass-fallback: rgba(16, 26, 38, 0.96);
-                --chip-bg: rgba(255, 255, 255, 0.08);
-                --chip-border: rgba(255, 255, 255, 0.12);
-                --chip-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 10px rgba(0, 0, 0, 0.22);
-                --tag-bg: rgba(126, 239, 230, 0.14);
-                --visit-bg: linear-gradient(180deg, #1aa197, #0e6b66);
+                --shadow: var(--raised);
+                --shadow-soft: var(--raised-sm);
+                --inset: var(--pressed);
+                --glass-bg: var(--surface);
+                --glass-fallback: var(--surface);
+                --chip-bg: var(--surface);
+                --chip-border: transparent;
+                --chip-shadow: var(--raised-sm);
+                --tag-bg: var(--surface);
+                --visit-bg: #14988f;
                 --visit-fg: #041412;
-                --portrait-bg:
-                    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08), transparent 42%),
-                    linear-gradient(160deg, rgba(20, 60, 58, 0.9), rgba(36, 32, 58, 0.85));
+                --visit-shadow: 6px 6px 14px rgba(0, 0, 0, 0.45), -4px -4px 10px rgba(255, 255, 255, 0.05);
+                --portrait-bg: var(--surface);
                 --orbit-circle: #6e8e96;
                 --orbit-square: #3a4454;
                 --divider: rgba(232, 238, 246, 0.12);
-                --level-bg: rgba(126, 239, 230, 0.12);
+                --level-bg: var(--surface);
                 --mark-fg: #f0c56a;
-                --mark-bg: linear-gradient(180deg, #3a2e14, #6b5420);
+                --mark-bg: var(--surface);
                 --mark-azure-fg: #bfdbfe;
-                --mark-azure-bg: linear-gradient(180deg, #172554, #1e3a8a);
-                --toggle-bg: rgba(255, 255, 255, 0.08);
-                --toggle-border: rgba(255, 255, 255, 0.16);
+                --mark-azure-bg: var(--surface);
+                --toggle-bg: var(--surface);
+                --toggle-border: transparent;
                 --toggle-fg: #e8eef6;
-                --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.42), transparent 68%);
-                --field-line: rgba(186, 214, 214, 0.07);
+                --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.14), transparent 68%);
             }
         }
 
@@ -243,18 +240,7 @@
             left: -14%;
             border-radius: 50%;
             background: var(--field-light);
-            filter: blur(8px);
-        }
-
-        .field-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--field-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--field-line) 1px, transparent 1px);
-            background-size: 64px 64px;
-            -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.85) 16%, transparent 46%);
-            mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.85) 16%, transparent 46%);
+            filter: blur(40px);
         }
 
         .page {
@@ -338,6 +324,7 @@
             border-radius: 999px;
             border: 1px solid var(--toggle-border);
             background: var(--toggle-bg);
+            box-shadow: var(--raised-sm);
             color: var(--toggle-fg);
             font: inherit;
             font-size: 0.86rem;
@@ -392,6 +379,7 @@
         .nav-menu a:hover {
             color: var(--ink);
             background: var(--nav-hover);
+            box-shadow: var(--pressed);
         }
 
         .nav-menu { display: none; position: relative; }
@@ -405,6 +393,7 @@
             border-radius: 999px;
             background: var(--menu-summary-bg);
             border: 1px solid var(--menu-summary-border);
+            box-shadow: var(--raised-sm);
         }
 
         .nav-menu summary::-webkit-details-marker { display: none; }
@@ -422,11 +411,9 @@
         }
 
         .glass {
-            background: var(--glass-bg);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft), var(--inset);
-            backdrop-filter: blur(14px) saturate(1.05);
-            -webkit-backdrop-filter: blur(14px) saturate(1.05);
+            background: var(--surface);
+            border: none;
+            box-shadow: var(--raised);
         }
 
         .hero {
@@ -534,6 +521,8 @@
             position: relative;
             justify-self: end;
             width: min(100%, 320px);
+            border-radius: 36px;
+            box-shadow: var(--raised);
         }
 
         .portrait {
@@ -543,46 +532,15 @@
             place-items: center;
             overflow: hidden;
             background: var(--portrait-bg);
+            box-shadow: none;
         }
 
         .portrait img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center center;
             display: block;
-        }
-
-        .orbit {
-            position: absolute;
-            pointer-events: none;
-        }
-
-        .orbit-circle {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--orbit-circle);
-            top: 14px;
-            right: 22px;
-        }
-
-        .orbit-square {
-            width: 28px;
-            height: 28px;
-            border-radius: 10px;
-            background: var(--orbit-square);
-            left: 16px;
-            bottom: 28px;
-        }
-
-        .orbit-ring {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 1px solid color-mix(in srgb, var(--teal) 22%, transparent);
-            right: 16px;
-            top: 48px;
         }
 
         section { scroll-margin-top: var(--header); padding: 56px 0 0; }
@@ -666,6 +624,7 @@
             padding: 6px 12px;
             border-radius: 999px;
             background: var(--level-bg);
+            box-shadow: var(--pressed);
             color: var(--teal);
             font-size: 0.78rem;
             font-weight: 800;
@@ -706,7 +665,7 @@
 
         .chips li.proficient {
             background: var(--level-bg);
-            border-color: color-mix(in srgb, var(--teal) 28%, transparent);
+            border-color: transparent;
             color: var(--teal);
         }
 
@@ -737,7 +696,7 @@
             min-width: 0;
             max-width: 100%;
             padding-bottom: 16px;
-            border-bottom: 1px solid var(--divider);
+            box-shadow: inset 0 -1px 0 var(--divider);
         }
 
         .role-top h3 {
@@ -760,7 +719,7 @@
         .role-card h4 {
             margin: 22px 0 0;
             padding-top: 18px;
-            border-top: 1px solid var(--divider);
+            box-shadow: inset 0 1px 0 var(--divider);
             font-family: var(--sans);
             font-size: 1.02rem;
             font-weight: 750;
@@ -773,7 +732,7 @@
         .role-card h4:first-of-type {
             margin-top: 18px;
             padding-top: 0;
-            border-top: 0;
+            box-shadow: none;
         }
 
         .role-card li strong {
@@ -788,6 +747,7 @@
             padding: 5px 11px;
             border-radius: 999px;
             background: var(--level-bg);
+            box-shadow: var(--pressed);
             color: var(--teal);
             font-size: 0.78rem;
             font-weight: 750;
@@ -879,6 +839,7 @@
             padding: 4px 8px;
             border-radius: 999px;
             background: var(--tag-bg);
+            box-shadow: var(--pressed);
             color: var(--teal);
             font-family: var(--sans);
             font-size: 0.72rem;
@@ -900,7 +861,7 @@
             max-width: 100%;
             color: var(--visit-fg);
             background: var(--visit-bg);
-            box-shadow: 0 6px 14px rgba(14, 107, 102, 0.12);
+            box-shadow: var(--visit-shadow);
             white-space: normal;
             text-align: center;
         }
@@ -970,13 +931,13 @@
             letter-spacing: 0.04em;
             color: var(--mark-fg);
             background: var(--mark-bg);
-            box-shadow: var(--inset), 0 6px 14px rgba(183, 121, 31, 0.16);
+            box-shadow: var(--raised-sm);
         }
 
         .mark.azure {
             color: var(--mark-azure-fg);
             background: var(--mark-azure-bg);
-            box-shadow: var(--inset), 0 6px 14px rgba(37, 99, 235, 0.12);
+            box-shadow: var(--raised-sm);
         }
 
         .edu-card { padding: 20px 24px; border-radius: 20px; margin-bottom: 12px; }
@@ -1081,7 +1042,6 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .orbit { animation: none; }
             .socials a:hover, .visit:hover { transform: none; }
         }
 
@@ -1093,7 +1053,6 @@
 <body>
     <div class="ambient" aria-hidden="true">
         <span class="field-light"></span>
-        <span class="field-grid"></span>
     </div>
     <div class="page">
         <header class="site-header glass">
@@ -1148,9 +1107,6 @@
                 </div>
 
                 <div class="portrait-wrap">
-                    <span class="orbit orbit-circle" aria-hidden="true"></span>
-                    <span class="orbit orbit-square" aria-hidden="true"></span>
-                    <span class="orbit orbit-ring" aria-hidden="true"></span>
                     <div class="portrait glass">
                         <img src="portrait.png" alt="Portrait of Ikenna Anasieze">
                     </div>
