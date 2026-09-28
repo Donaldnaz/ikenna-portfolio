@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ikenna.cloud | Ikenna Anasieze</title>
+    <meta name="description" content="Ikenna.cloud — personal site of Ikenna Anasieze, an AI cloud and platform engineer working across AWS and GCP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #162033;
+            --muted: #3f4e66;
+            --soft: #5c6b82;
+            --teal: #0e6b66;
+            --teal-bright: #14988f;
+            --violet: #3d4a62;
+            --coral: #d45d73;
+            --amber: #b7791f;
+            --paper: #f6f3ec;
+            --glass: rgba(255, 255, 255, 0.62);
+            --glass-strong: rgba(255, 255, 255, 0.82);
+            --line: rgba(255, 255, 255, 0.72);
+            --line-ink: rgba(22, 32, 51, 0.08);
+            --shadow: 0 14px 32px rgba(46, 62, 98, 0.08);
+            --shadow-soft: 0 8px 22px rgba(46, 62, 98, 0.06);
+            --inset: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            --radius: 28px;
+            --sans: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+            --header: 92px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 112px;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            background:
+                radial-gradient(720px 420px at 0% 0%, rgba(186, 214, 214, 0.22), transparent 62%),
+                radial-gradient(640px 380px at 100% 8%, rgba(206, 204, 216, 0.2), transparent 58%),
+                linear-gradient(165deg, #f7f6f3 0%, #eef2f3 48%, #f3f1f4 100%);
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: #0e6b66;
+            color: #fff;
+        }
+
+        a { color: inherit; }
+
+        a:focus-visible,
+        summary:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--teal);
+            outline-offset: 3px;
+        }
+
+        .ambient {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(72px);
+            opacity: 0.34;
+        }
+
+        .blob-a {
+            width: min(28vw, 320px);
+            height: min(28vw, 320px);
+            background: radial-gradient(circle at 30% 30%, #c5ddd8, #d5e4e8 60%, transparent 74%);
+            top: -6%;
+            left: -6%;
+            animation: drift 56s ease-in-out infinite;
+        }
+
+        .blob-b {
+            width: min(24vw, 280px);
+            height: min(24vw, 280px);
+            background: radial-gradient(circle at 40% 40%, #dddbe6, #e4e2ea 58%, transparent 74%);
+            top: 10%;
+            right: -8%;
+            animation: drift 64s ease-in-out infinite reverse;
+        }
+
+        .blob-c {
+            width: min(22vw, 250px);
+            height: min(22vw, 250px);
+            background: radial-gradient(circle at 40% 40%, #eadfe2, #e7e3e4 58%, transparent 74%);
+            bottom: 8%;
+            left: 22%;
+            animation: drift 60s ease-in-out infinite 2s;
+        }
+
+        .blob-d {
+            width: min(16vw, 180px);
+            height: min(16vw, 180px);
+            background: radial-gradient(circle at 40% 40%, #ebe4d4, #e8e4da 55%, transparent 74%);
+            bottom: -4%;
+            right: 10%;
+            animation: drift 70s ease-in-out infinite 4s;
+        }
+
+        .shape {
+            position: absolute;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .shape-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(14, 107, 102, 0.16);
+            background: rgba(255, 255, 255, 0.18);
+            top: 18%;
+            left: 7%;
+        }
+
+        .shape-squircle {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: linear-gradient(145deg, rgba(90, 96, 120, 0.16), rgba(255, 255, 255, 0.28));
+            top: 62%;
+            right: 6%;
+        }
+
+        .shape-morph {
+            width: 64px;
+            height: 64px;
+            border-radius: 46% 54% 58% 42% / 48% 42% 58% 52%;
+            background: linear-gradient(135deg, rgba(160, 150, 158, 0.16), rgba(176, 196, 198, 0.14));
+            top: 38%;
+            right: 14%;
+        }
+
+        .shape-ring {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid rgba(140, 120, 90, 0.28);
+            background: transparent;
+            bottom: 16%;
+            left: 12%;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding-bottom: 72px;
+        }
+
+        .hero,
+        .prof-grid,
+        .card-grid,
+        .split,
+        .hero > *,
+        .prof-grid > *,
+        .card-grid > *,
+        .split > *,
+        .role-card,
+        .role-card > div,
+        .project-top,
+        .project-top > div,
+        .cred-card,
+        .cred-card > div,
+        .timeline,
+        .projects,
+        footer {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        h1, h2, h3, h4, p, li, .meta, .project-copy, footer, footer a {
+            overflow-wrap: break-word;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 16px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-width: 0;
+            max-width: 100%;
+            margin-top: 16px;
+            padding: 12px 14px 12px 20px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.74));
+        }
+
+        .logo {
+            font-family: var(--sans);
+            font-weight: 680;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .logo span { color: var(--teal); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-links a,
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 999px;
+        }
+
+        .nav-links a:hover,
+        .nav-menu a:hover {
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .nav-menu { display: none; position: relative; }
+
+        .nav-menu summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-menu summary::-webkit-details-marker { display: none; }
+
+        .nav-menu nav {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 10px);
+            z-index: 30;
+            display: grid;
+            min-width: 210px;
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .glass {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.48));
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft), var(--inset);
+            backdrop-filter: blur(14px) saturate(1.05);
+            -webkit-backdrop-filter: blur(14px) saturate(1.05);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+            gap: 28px;
+            align-items: center;
+            padding: 48px 0 28px;
+        }
+
+        .kicker {
+            margin: 0 0 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--sans);
+            font-weight: 560;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            overflow-wrap: break-word;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(3.1rem, 7vw, 5.4rem);
+            color: var(--ink);
+        }
+
+        .role {
+            margin: 14px 0 0;
+            font-family: var(--sans);
+            font-size: clamp(1.2rem, 2vw, 1.55rem);
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            color: var(--violet);
+        }
+
+        .lede {
+            margin: 18px 0 0;
+            max-width: 42rem;
+            color: var(--muted);
+            font-size: 1.08rem;
+        }
+
+        .proficiency-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+        }
+
+        .pill strong { font-weight: 800; }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--teal);
+        }
+
+        .dot.gcp { background: #4a6fa5; }
+
+        .socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 11px 14px;
+            border-radius: 16px;
+            color: var(--ink);
+        }
+
+        .socials a:hover { transform: translateY(-2px); }
+
+        .socials svg { width: 18px; height: 18px; flex: none; }
+
+        .portrait-wrap {
+            position: relative;
+            justify-self: end;
+            width: min(100%, 320px);
+        }
+
+        .portrait {
+            aspect-ratio: 1;
+            border-radius: 36px;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9), transparent 42%),
+                linear-gradient(160deg, rgba(224, 242, 241, 0.9), rgba(237, 233, 254, 0.85));
+        }
+
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .orbit {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .orbit-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #8aabb0;
+            top: -6px;
+            right: 28px;
+        }
+
+        .orbit-square {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            background: #d5d3dc;
+            left: 8px;
+            bottom: 54px;
+        }
+
+        .orbit-ring {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(14, 107, 102, 0.16);
+            right: 8px;
+            top: 42px;
+        }
+
+        section { scroll-margin-top: var(--header); padding: 28px 0; }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+
+        .index {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--soft);
+        }
+
+        .prof-grid,
+        .card-grid,
+        .split {
+            display: grid;
+            gap: 16px;
+        }
+
+        .prof-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); margin-bottom: 16px; }
+
+        .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        .split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+
+        .card {
+            border-radius: var(--radius);
+            padding: 22px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 1.55rem;
+        }
+
+        .card p { margin: 0; color: var(--muted); }
+
+        .prof-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 190px;
+        }
+
+        .prof-card h3 {
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+        }
+
+        .prof-card::after {
+            content: "";
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            right: -24px;
+            bottom: -36px;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.32;
+        }
+
+        .prof-card.aws::after { background: radial-gradient(circle, #fcd34d, transparent 70%); }
+        .prof-card.gcp::after { background: radial-gradient(circle, #93c5fd, transparent 70%); }
+
+        .level {
+            display: inline-flex;
+            margin-top: 16px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(14, 107, 102, 0.1);
+            color: var(--teal);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .card h4 {
+            margin: 0 0 12px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .chips { max-width: 100%; }
+
+        .chips li {
+            max-width: 100%;
+            padding: 7px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 10px rgba(46, 62, 98, 0.04);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .chips li.proficient {
+            background: rgba(14, 107, 102, 0.12);
+            border-color: rgba(14, 107, 102, 0.18);
+            color: var(--teal);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .role-card {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            padding: 24px 26px 22px;
+            border-radius: var(--radius);
+        }
+
+        .role-body {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .role-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px 20px;
+            min-width: 0;
+            max-width: 100%;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(22, 32, 51, 0.08);
+        }
+
+        .role-top h3 {
+            flex: 1 1 14rem;
+            margin: 0;
+            max-width: 100%;
+            min-width: 0;
+            font-size: clamp(1.28rem, 2.1vw, 1.5rem);
+            font-weight: 680;
+            line-height: 1.28;
+            letter-spacing: -0.03em;
+        }
+
+        .role-top h3 span {
+            color: var(--teal);
+            font-style: normal;
+            font-weight: 620;
+        }
+
+        .role-card h4 {
+            margin: 22px 0 0;
+            padding-top: 18px;
+            border-top: 1px solid rgba(22, 32, 51, 0.07);
+            font-family: var(--sans);
+            font-size: 1.02rem;
+            font-weight: 750;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            color: var(--teal);
+            overflow-wrap: break-word;
+        }
+
+        .role-card h4:first-of-type {
+            margin-top: 18px;
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .role-card li strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .when {
+            flex: 0 1 auto;
+            align-self: flex-start;
+            margin: 2px 0 0;
+            padding: 5px 11px;
+            border-radius: 999px;
+            background: rgba(14, 107, 102, 0.1);
+            color: var(--teal);
+            font-size: 0.78rem;
+            font-weight: 750;
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+            white-space: nowrap;
+            max-width: 100%;
+        }
+
+        .role-card ul {
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .role-card li {
+            position: relative;
+            max-width: 100%;
+            padding-left: 18px;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.65;
+            overflow-wrap: break-word;
+        }
+
+        .role-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.68em;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--teal-bright);
+            opacity: 0.85;
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px 16px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .project-top > div { flex: 1 1 16rem; }
+
+        .card h3 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            margin-left: 0;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(20, 152, 143, 0.12);
+            color: var(--teal);
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            font-style: normal;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            vertical-align: middle;
+        }
+
+        .visit {
+            display: inline-flex;
+            flex: none;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            padding: 12px 16px;
+            border-radius: 16px;
+            color: #fff;
+            background: linear-gradient(180deg, #1aa197, #0e6b66);
+            box-shadow: 0 6px 14px rgba(14, 107, 102, 0.12);
+        }
+
+        .visit:hover { transform: translateY(-2px); }
+
+        .projects { display: grid; gap: 16px; }
+
+        .project-top + .chips { margin-top: 16px; }
+
+        .project-copy { margin: 14px 0 18px; color: var(--muted); }
+
+        .cred-card {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            padding: 16px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .cred-card h3,
+        .edu-card h3 {
+            margin: 0;
+            font-family: var(--sans);
+            font-size: 0.98rem;
+            letter-spacing: -0.01em;
+            line-height: 1.35;
+        }
+
+        .meta { margin: 4px 0 0; color: var(--soft); font-size: 0.84rem; font-weight: 650; }
+
+        .mark {
+            flex: none;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: #7c4a03;
+            background: linear-gradient(180deg, #fff7e6, #fde68a);
+            box-shadow: inset 0 1px 0 #fff, 0 6px 14px rgba(183, 121, 31, 0.16);
+        }
+
+        .mark.azure {
+            color: #1d4ed8;
+            background: linear-gradient(180deg, #eff6ff, #bfdbfe);
+            box-shadow: inset 0 1px 0 #fff, 0 6px 14px rgba(37, 99, 235, 0.12);
+        }
+
+        .edu-card { padding: 18px; border-radius: 20px; margin-bottom: 12px; }
+
+        .edu-card .school { margin: 4px 0 0; color: var(--teal); font-weight: 750; }
+
+        footer {
+            margin-top: 20px;
+            padding: 22px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--soft);
+            font-size: 0.88rem;
+        }
+
+        footer a { color: var(--teal); font-weight: 700; }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(1.5%, -1%); }
+        }
+
+        @media (max-width: 980px) {
+            .hero, .card-grid, .split, .prof-grid { grid-template-columns: minmax(0, 1fr); }
+            .portrait-wrap { justify-self: start; }
+            .shape-morph { right: 4%; top: 28%; width: 48px; height: 48px; }
+        }
+
+        @media (max-width: 760px) {
+            .page { width: min(1120px, calc(100% - 32px)); }
+            .nav-links { display: none; }
+            .nav-menu { display: block; flex: none; margin-left: auto; }
+            .nav-menu summary {
+                color: var(--ink);
+                background: #fff;
+                border: 1px solid rgba(22, 32, 51, 0.14);
+            }
+            .site-header { border-radius: 22px; top: 10px; }
+            .hero { padding-top: 28px; }
+            h1 { font-size: clamp(1.85rem, 7vw, 2.2rem); }
+            .portrait-wrap { width: min(100%, 280px); }
+            .orbit-ring { right: 6px; }
+            .orbit-square { left: 6px; }
+            .shape-circle { width: 46px; height: 46px; left: auto; right: 8%; top: 12%; }
+            .shape-squircle { width: 40px; height: 40px; top: auto; bottom: 8%; right: 10%; }
+            .shape-ring { left: 6%; bottom: 10%; }
+            .role-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .role-top h3 { flex-basis: auto; width: 100%; font-size: 1.22rem; }
+            .when { margin-top: 0; min-width: 0; white-space: normal; }
+            .card h3 { font-size: 1.28rem; }
+            .card, .role-card { padding: 18px; }
+            .project-top { flex-direction: column; align-items: stretch; }
+            .visit { justify-content: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .blob, .shape, .orbit { animation: none; }
+            .socials a:hover, .visit:hover { transform: none; }
+        }
+
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            .glass { background: rgba(255, 255, 255, 0.92); }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient" aria-hidden="true">
+        <span class="blob blob-a"></span>
+        <span class="blob blob-b"></span>
+        <span class="blob blob-c"></span>
+        <span class="blob blob-d"></span>
+        <span class="shape shape-circle"></span>
+        <span class="shape shape-squircle"></span>
+        <span class="shape shape-morph"></span>
+        <span class="shape shape-ring"></span>
+    </div>
+
+    <div class="page">
+        <header class="site-header glass">
+            <a class="logo" href="#about">Ikenna<span>.cloud</span></a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Credentials</a>
+            </nav>
+            <details class="nav-menu">
+                <summary>Menu</summary>
+                <nav class="glass" aria-label="Mobile">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#certifications">Credentials</a>
+                </nav>
+            </details>
+        </header>
+
+        <main>
+            <section class="hero" id="about">
+                <div class="hero-copy glass card">
+                    <h1>Ikenna Anasieze</h1>
+                    <p class="role">AI Cloud &amp; Platform Engineer</p>
+                    <p class="lede">I’m an AI Cloud &amp; Platform Engineer who bridges AI workloads with cloud architecture. Specializing in AWS and GCP, I build containerized microservices platforms, event-driven serverless systems, and active-active multi-region architectures on the Cloud.</p>
+                    <div class="socials">
+                        <a class="glass" href="https://linkedin.com/in/ikenna-anasieze" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.05c.53-1 1.84-2.1 3.79-2.1 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.06V24h-4V8.5z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a class="glass" href="https://github.com/donaldnaz" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 1.8 2.8 1.3.1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.4 4.7 18.4 5 18.4 5c.6 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+                            GitHub
+                        </a>
+                        <a class="glass" href="mailto:ikenna.anasieze@gmail.com">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portrait-wrap">
+                    <span class="orbit orbit-circle" aria-hidden="true"></span>
+                    <span class="orbit orbit-square" aria-hidden="true"></span>
+                    <span class="orbit orbit-ring" aria-hidden="true"></span>
+                    <div class="portrait glass">
+                        <img src="portrait.png" alt="Portrait of Ikenna Anasieze">
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <div class="section-head">
+                    <span class="index">01</span>
+                    <h2>Skills</h2>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card glass">
+                        <h4>Cloud Platforms</h4>
+                        <ul class="chips">
+                            <li>AWS</li>
+                            <li>GCP</li>
+                            <li>Microsoft Azure</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <h4>IaC &amp; CI/CD</h4>
+                        <ul class="chips">
+                            <li>Terraform</li>
+                            <li>AWS CloudFormation</li>
+                            <li>GitHub Actions</li>
+                            <li>AWS CodePipeline</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <h4>Containers &amp; Orchestration</h4>
+                        <ul class="chips">
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
+                            <li>Cloud Run</li>
+                            <li>GCP Workflows</li>
+                            <li>AWS ECS</li>
+                            <li>AWS Step Functions</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <h4>AI &amp; MLOps Engineering</h4>
+                        <ul class="chips">
+                            <li>Amazon SageMaker</li>
+                            <li>PyTorch</li>
+                            <li>XGBoost</li>
+                            <li>scikit-learn</li>
+                            <li>Amazon Bedrock</li>
+                            <li>Gemini</li>
+                            <li>MCP Server</li>
+                            <li>AI Agents</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <h4>Networking &amp; Security</h4>
+                        <ul class="chips">
+                            <li>VPCs</li>
+                            <li>IAM</li>
+                            <li>KMS</li>
+                            <li>Zero-Trust</li>
+                            <li>SOC 2</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <h4>Monitoring &amp; Observability</h4>
+                        <ul class="chips">
+                            <li>Prometheus</li>
+                            <li>Grafana</li>
+                            <li>AWS CloudWatch</li>
+                            <li>Cloud Monitoring</li>
+                            <li>CloudTrail</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="experience">
+                <div class="section-head">
+                    <span class="index">02</span>
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <article class="role-card glass">
+                        <div class="role-body">
+                            <div class="role-top">
+                                <h3>AI Cloud Engineer <span>@ Vosyn</span></h3>
+                                <span class="when">01/2025 – Present</span>
+                            </div>
+                            <h4>Event-Driven AI Media Localization Pipeline</h4>
+                            <ul>
+                                <li>Engineered an automated audio processing workflow for Vosyn’s AI platform using GCP Workflows.</li>
+                                <li>Orchestrated sequential ML models including Spleeter, Whisper, T5, and NVIDIA NeMo for end-to-end voice cloning and translation.</li>
+                                <li>Partnered with cross-functional teams to translate complex AI models into scalable production services.</li>
+                            </ul>
+                            <h4>High-Performance Hybrid Data Architecture &amp; FinOps</h4>
+                            <ul>
+                                <li>Built a split data layer using a relational OLTP primary database alongside an OLAP layer for business analytics.</li>
+                                <li>Replaced always-on model hosting with GCS-based retrieval and warm-standby patterns to cut cloud costs while keeping sub-second latency.</li>
+                                <li>Integrated Prometheus, Grafana, and Cloud Logging to map latency, pipeline bottlenecks, and real-time infrastructure spend.</li>
+                            </ul>
+                            <h4>Automated ML DevSecOps &amp; Fault-Tolerant Infrastructure</h4>
+                            <ul>
+                                <li>Automated container builds, Terraform provisioning, and ML model deployments via GitHub Actions CI/CD pipelines.</li>
+                                <li>Secured cloud environments with strict IAM policies and integrated Dead Letter Queues (DLQs) to trap pipeline failures.</li>
+                                <li>Ensured total data retention and zero data loss during system crashes through automated error isolation.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="role-card glass">
+                        <div class="role-body">
+                            <div class="role-top">
+                                <h3>AWS Cloud / DevOps Engineer <span>@ Visual Path Training &amp; Consulting</span></h3>
+                                <span class="when">09/2023 – Present</span>
+                            </div>
+                            <h4>High-Availability &amp; Zero-Trust K8s Platform</h4>
+                            <ul>
+                                <li>Secured a high-volume Python support platform with a SOC 2-compliant, Zero-Trust AWS VPC topology.</li>
+                                <li>Deployed production Kubernetes clusters (Helm, Lens) and multi-AZ PostgreSQL for near-zero RPO/RTO.</li>
+                                <li>Integrated Prometheus and Grafana for real-time health tracking and severity alerting.</li>
+                            </ul>
+                            <h4>Serverless Event-Driven Job Tracker</h4>
+                            <ul>
+                                <li>Decoupled heavy background tasks from core apps using AWS Amplify, API Gateway, and Lambda.</li>
+                                <li>Leveraged SQS and SNS for asynchronous queueing and event fan-out processing.</li>
+                                <li>Tracked real-time status in DynamoDB to create a self-scaling, zero-maintenance pipeline.</li>
+                            </ul>
+                            <h4>Active-Active Multi-Region Disaster Recovery</h4>
+                            <ul>
+                                <li>Scaled a 3-tier application stack into an Active-Active multi-region deployment on AWS.</li>
+                                <li>Automated cross-region failover using AWS Route 53 intelligent routing and health checks.</li>
+                                <li>Protected global operations against catastrophic regional outages with zero manual intervention.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="projects">
+                <div class="section-head">
+                    <span class="index">03</span>
+                    <h2>Projects</h2>
+                </div>
+                <div class="projects">
+                    <article class="card glass">
+                        <div class="project-top">
+                            <div>
+                                <h3>iCare <span class="tag">Production Project</span></h3>
+                            </div>
+                            <a class="visit" href="https://technest-project-psi.vercel.app" target="_blank" rel="noopener noreferrer">Visit iCare</a>
+                        </div>
+                        <p class="project-copy">Designed and developed an end-to-end AI powered medical document platform using Node.js, PostgreSQL, Tailwind CSS, and Gemini that allows users to securely upload medical documents, converts complex medical information into plain English, and delivers easy to understand results.</p>
+                        <ul class="chips">
+                            <li>Tailwind CSS</li>
+                            <li>Node.js</li>
+                            <li>PostgreSQL</li>
+                            <li>Gemini AI</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <div class="project-top">
+                            <div>
+                                <h3>Credit Card Fraud Detection</h3>
+                            </div>
+                        </div>
+                        <p class="project-copy">Designed and trained a credit card fraud detection model on Amazon SageMaker. Built and compared ANN and XGBoost to identify fraudulent card transactions.</p>
+                        <ul class="chips">
+                            <li>Amazon SageMaker</li>
+                            <li>Python</li>
+                            <li>ANN</li>
+                            <li>XGBoost</li>
+                        </ul>
+                    </article>
+                    <article class="card glass">
+                        <div class="project-top">
+                            <div>
+                                <h3>AWS Event-Driven Cost Optimizer</h3>
+                            </div>
+                            <a class="visit" href="https://github.com/Donaldnaz/aws-event-driven-cost-optimizer" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                        <p class="project-copy">A nightly, event-driven system that analyzes AWS spending and surfaces cost optimization opportunities across your entire account.</p>
+                        <ul class="chips">
+                            <li>Python</li>
+                            <li>Lambda</li>
+                            <li>EventBridge</li>
+                            <li>S3</li>
+                            <li>SNS</li>
+                            <li>Terraform</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="certifications">
+                <div class="section-head">
+                    <span class="index">04</span>
+                    <h2>Credentials</h2>
+                </div>
+                <div class="split">
+                    <div>
+                        <article class="cred-card glass">
+                            <div>
+                                <h3>AWS Certified Solutions Architect – Associate</h3>
+                                <p class="meta">Expected November 2026</p>
+                            </div>
+                            <span class="mark">AWS</span>
+                        </article>
+                        <article class="cred-card glass">
+                            <div>
+                                <h3>AWS Certified AI Practitioner</h3>
+                                <p class="meta">2026</p>
+                            </div>
+                            <span class="mark">AWS</span>
+                        </article>
+                        <article class="cred-card glass">
+                            <div>
+                                <h3>Microsoft Azure Fundamentals (AZ-900)</h3>
+                                <p class="meta">2024</p>
+                            </div>
+                            <span class="mark azure">AZ</span>
+                        </article>
+                        <article class="cred-card glass">
+                            <div>
+                                <h3>AWS Certified Cloud Practitioner</h3>
+                                <p class="meta">2023</p>
+                            </div>
+                            <span class="mark">AWS</span>
+                        </article>
+                    </div>
+                    <div>
+                        <article class="edu-card glass">
+                            <h3>Master of Engineering (M.Sc.)</h3>
+                            <p class="school">Memorial University of Newfoundland</p>
+                            <p class="meta">2024 – 2025</p>
+                        </article>
+                        <article class="edu-card glass">
+                            <h3>Bachelor of Engineering (B.Eng.)</h3>
+                            <p class="school">Covenant University</p>
+                            <p class="meta">2012 – 2018</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="glass">
+            <span>© 2026 Ikenna Anasieze · Ikenna.cloud</span>
+            <a href="mailto:ikenna.anasieze@gmail.com">ikenna.anasieze@gmail.com</a>
+        </footer>
+    </div>
+    <script>
+        document.querySelectorAll(".nav-menu a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                var menu = link.closest("details");
+                if (menu) menu.open = false;
+            });
+        });
+    </script>
+</body>
+</html>
