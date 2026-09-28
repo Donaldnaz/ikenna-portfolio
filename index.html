@@ -77,9 +77,8 @@
             --toggle-bg: rgba(255, 255, 255, 0.7);
             --toggle-border: rgba(22, 32, 51, 0.14);
             --toggle-fg: #162033;
-            --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 152, 143, 0.55), rgba(186, 214, 214, 0.35) 42%, transparent 70%);
-            --blob-b: radial-gradient(circle at 40% 40%, rgba(176, 186, 214, 0.7), rgba(214, 210, 224, 0.28) 46%, transparent 72%);
-            --blob-c: radial-gradient(circle at 45% 45%, rgba(232, 214, 186, 0.75), rgba(214, 196, 176, 0.22) 48%, transparent 72%);
+            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 152, 143, 0.28), transparent 68%);
+            --field-line: rgba(22, 32, 51, 0.055);
         }
 
         html[data-theme="dark"] {
@@ -134,9 +133,8 @@
             --toggle-bg: rgba(255, 255, 255, 0.08);
             --toggle-border: rgba(255, 255, 255, 0.16);
             --toggle-fg: #e8eef6;
-            --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 120, 112, 0.85), rgba(12, 48, 52, 0.35) 46%, transparent 72%);
-            --blob-b: radial-gradient(circle at 40% 40%, rgba(70, 86, 140, 0.7), rgba(28, 36, 64, 0.2) 48%, transparent 72%);
-            --blob-c: radial-gradient(circle at 45% 45%, rgba(120, 86, 36, 0.45), rgba(48, 32, 16, 0.12) 50%, transparent 72%);
+            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.42), transparent 68%);
+            --field-line: rgba(186, 214, 214, 0.07);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -192,9 +190,8 @@
                 --toggle-bg: rgba(255, 255, 255, 0.08);
                 --toggle-border: rgba(255, 255, 255, 0.16);
                 --toggle-fg: #e8eef6;
-                --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 120, 112, 0.85), rgba(12, 48, 52, 0.35) 46%, transparent 72%);
-                --blob-b: radial-gradient(circle at 40% 40%, rgba(70, 86, 140, 0.7), rgba(28, 36, 64, 0.2) 48%, transparent 72%);
-                --blob-c: radial-gradient(circle at 45% 45%, rgba(120, 86, 36, 0.45), rgba(48, 32, 16, 0.12) 50%, transparent 72%);
+                --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.42), transparent 68%);
+                --field-line: rgba(186, 214, 214, 0.07);
             }
         }
 
@@ -238,38 +235,26 @@
             pointer-events: none;
         }
 
-        .blob {
+        .field-light {
             position: absolute;
+            width: min(72vw, 840px);
+            height: min(72vw, 840px);
+            top: -18%;
+            left: -14%;
             border-radius: 50%;
-            filter: blur(70px);
-            transform: translateZ(0);
+            background: var(--field-light);
+            filter: blur(8px);
         }
 
-        .blob-a {
-            width: min(46vw, 560px);
-            height: min(46vw, 560px);
-            background: var(--blob-a);
-            top: -8%;
-            left: -6%;
-            animation: drift 48s ease-in-out infinite;
-        }
-
-        .blob-b {
-            width: min(38vw, 460px);
-            height: min(38vw, 460px);
-            background: var(--blob-b);
-            top: 6%;
-            right: -8%;
-            animation: drift 56s ease-in-out infinite reverse;
-        }
-
-        .blob-c {
-            width: min(42vw, 520px);
-            height: min(34vw, 420px);
-            background: var(--blob-c);
-            bottom: -6%;
-            left: 28%;
-            animation: drift 62s ease-in-out infinite;
+        .field-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--field-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--field-line) 1px, transparent 1px);
+            background-size: 64px 64px;
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.85) 16%, transparent 46%);
+            mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.85) 16%, transparent 46%);
         }
 
         .page {
@@ -322,12 +307,14 @@
         }
 
         .logo {
+            min-width: 0;
             font-family: var(--sans);
             font-weight: 680;
             font-size: 1.25rem;
             letter-spacing: -0.03em;
             text-decoration: none;
             color: var(--ink);
+            overflow-wrap: anywhere;
         }
 
         .logo span { color: var(--teal); }
@@ -487,6 +474,7 @@
             max-width: 42rem;
             color: var(--muted);
             font-size: 1.08rem;
+            overflow-wrap: anywhere;
         }
 
         .proficiency-line {
@@ -575,8 +563,8 @@
             height: 16px;
             border-radius: 50%;
             background: var(--orbit-circle);
-            top: -6px;
-            right: 28px;
+            top: 14px;
+            right: 22px;
         }
 
         .orbit-square {
@@ -584,8 +572,8 @@
             height: 28px;
             border-radius: 10px;
             background: var(--orbit-square);
-            left: 8px;
-            bottom: 54px;
+            left: 16px;
+            bottom: 28px;
         }
 
         .orbit-ring {
@@ -593,11 +581,13 @@
             height: 56px;
             border-radius: 50%;
             border: 1px solid color-mix(in srgb, var(--teal) 22%, transparent);
-            right: 8px;
-            top: 42px;
+            right: 16px;
+            top: 48px;
         }
 
-        section { scroll-margin-top: var(--header); padding: 28px 0; }
+        section { scroll-margin-top: var(--header); padding: 56px 0 0; }
+
+        .hero { padding: 40px 0 8px; }
 
         .section-head {
             display: flex;
@@ -631,14 +621,16 @@
 
         .split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
 
-        .card {
+        .card,
+        .role-card {
             border-radius: var(--radius);
-            padding: 22px;
+            padding: 24px;
         }
 
         .card h3 {
             margin: 0 0 8px;
-            font-size: 1.55rem;
+            font-size: 1.35rem;
+            line-height: 1.3;
         }
 
         .card p { margin: 0; color: var(--muted); }
@@ -701,6 +693,7 @@
 
         .chips li {
             max-width: 100%;
+            min-width: 0;
             padding: 7px 10px;
             border-radius: 12px;
             background: var(--chip-bg);
@@ -728,8 +721,6 @@
             display: block;
             width: 100%;
             min-width: 0;
-            padding: 24px 26px 22px;
-            border-radius: var(--radius);
         }
 
         .role-body {
@@ -862,6 +853,13 @@
             max-width: 100%;
         }
 
+        #projects .card h3 {
+            margin: 0;
+            font-size: 1.32rem;
+            line-height: 1.3;
+            align-items: center;
+        }
+
         #projects .tag {
             white-space: normal;
             overflow-wrap: anywhere;
@@ -938,10 +936,15 @@
             display: flex;
             justify-content: space-between;
             gap: 12px;
-            align-items: center;
-            padding: 16px 18px;
+            align-items: flex-start;
+            padding: 20px 24px;
             border-radius: 20px;
             margin-bottom: 12px;
+        }
+
+        .cred-card > div {
+            flex: 1 1 auto;
+            min-width: 0;
         }
 
         .cred-card h3,
@@ -976,12 +979,12 @@
             box-shadow: var(--inset), 0 6px 14px rgba(37, 99, 235, 0.12);
         }
 
-        .edu-card { padding: 18px; border-radius: 20px; margin-bottom: 12px; }
+        .edu-card { padding: 20px 24px; border-radius: 20px; margin-bottom: 12px; }
 
         .edu-card .school { margin: 4px 0 0; color: var(--teal); font-weight: 750; }
 
         footer {
-            margin-top: 20px;
+            margin-top: 56px;
             padding: 22px;
             border-radius: 24px;
             display: flex;
@@ -994,18 +997,7 @@
 
         footer a { color: var(--teal); font-weight: 700; }
 
-        @keyframes drift {
-            0%, 100% { transform: translate3d(0, 0, 0); }
-            50% { transform: translate3d(2.5%, -1.5%, 0); }
-        }
-
-        @media (max-width: 980px) {
-            .hero, .card-grid, .split, .prof-grid { grid-template-columns: minmax(0, 1fr); }
-            .portrait-wrap { justify-self: start; }
-        }
-
-        @media (max-width: 900px) {
-            .page { width: min(1120px, calc(100% - 32px)); }
+        @media (max-width: 1100px) {
             .nav-links { display: none; }
             .nav-menu { display: block; flex: none; }
             .theme-toggle { padding: 8px 10px; }
@@ -1021,22 +1013,28 @@
                 padding: 10px 12px 10px 16px;
             }
             .logo { font-size: 1.05rem; }
-            .blob { filter: blur(52px); }
-            .blob-a, .blob-b { width: 240px; height: 240px; }
-            .blob-c { width: 280px; height: 200px; left: 8%; }
-            .hero { padding-top: 28px; }
-            h1 { font-size: clamp(1.85rem, 7vw, 2.2rem); }
-            .portrait-wrap { width: min(100%, 280px); }
-            .orbit-ring { right: 6px; }
-            .orbit-square { left: 6px; }
             .role-top { flex-direction: column; align-items: flex-start; gap: 10px; }
             .role-top h3 { flex-basis: auto; width: 100%; font-size: 1.22rem; }
             .when { margin-top: 0; min-width: 0; white-space: normal; }
+        }
+
+        @media (max-width: 980px) {
+            .hero, .card-grid, .split, .prof-grid { grid-template-columns: minmax(0, 1fr); }
+            .portrait-wrap { justify-self: center; }
+        }
+
+        @media (max-width: 900px) {
+            .page { width: min(1120px, calc(100% - 32px)); }
+            .field-light { width: 320px; height: 320px; }
+            .hero { padding-top: 28px; }
+            h1 { font-size: clamp(1.85rem, 7vw, 2.2rem); }
+            .portrait-wrap { width: min(100%, 280px); }
             .card h3 { font-size: 1.28rem; }
             .card, .role-card { padding: 18px; }
+            .cred-card, .edu-card { padding: 16px 18px; }
             .project-top { flex-direction: column; align-items: stretch; }
             .project-top > div { flex: 0 1 auto; width: 100%; }
-            #projects .card h3 { width: 100%; }
+            #projects .card h3 { width: 100%; font-size: 1.24rem; }
             .visit {
                 display: flex;
                 width: 100%;
@@ -1072,9 +1070,18 @@
             #projects .chips { width: 100%; }
         }
 
+        @media (max-width: 520px) {
+            .theme-toggle { padding: 8px; }
+            html .theme-toggle .label-dark,
+            html .theme-toggle .label-light,
+            html[data-theme="dark"] .theme-toggle .label-light,
+            html:not([data-theme="light"]) .theme-toggle .label-light { display: none; }
+            .nav-menu summary { padding: 8px 12px; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .blob, .orbit { animation: none; }
+            .orbit { animation: none; }
             .socials a:hover, .visit:hover { transform: none; }
         }
 
@@ -1085,9 +1092,8 @@
 </head>
 <body>
     <div class="ambient" aria-hidden="true">
-        <span class="blob blob-a"></span>
-        <span class="blob blob-b"></span>
-        <span class="blob blob-c"></span>
+        <span class="field-light"></span>
+        <span class="field-grid"></span>
     </div>
     <div class="page">
         <header class="site-header glass">
