@@ -77,6 +77,9 @@
             --toggle-bg: rgba(255, 255, 255, 0.7);
             --toggle-border: rgba(22, 32, 51, 0.14);
             --toggle-fg: #162033;
+            --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 152, 143, 0.55), rgba(186, 214, 214, 0.35) 42%, transparent 70%);
+            --blob-b: radial-gradient(circle at 40% 40%, rgba(176, 186, 214, 0.7), rgba(214, 210, 224, 0.28) 46%, transparent 72%);
+            --blob-c: radial-gradient(circle at 45% 45%, rgba(232, 214, 186, 0.75), rgba(214, 196, 176, 0.22) 48%, transparent 72%);
         }
 
         html[data-theme="dark"] {
@@ -131,6 +134,9 @@
             --toggle-bg: rgba(255, 255, 255, 0.08);
             --toggle-border: rgba(255, 255, 255, 0.16);
             --toggle-fg: #e8eef6;
+            --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 120, 112, 0.85), rgba(12, 48, 52, 0.35) 46%, transparent 72%);
+            --blob-b: radial-gradient(circle at 40% 40%, rgba(70, 86, 140, 0.7), rgba(28, 36, 64, 0.2) 48%, transparent 72%);
+            --blob-c: radial-gradient(circle at 45% 45%, rgba(120, 86, 36, 0.45), rgba(48, 32, 16, 0.12) 50%, transparent 72%);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -186,6 +192,9 @@
                 --toggle-bg: rgba(255, 255, 255, 0.08);
                 --toggle-border: rgba(255, 255, 255, 0.16);
                 --toggle-fg: #e8eef6;
+                --blob-a: radial-gradient(circle at 35% 35%, rgba(20, 120, 112, 0.85), rgba(12, 48, 52, 0.35) 46%, transparent 72%);
+                --blob-b: radial-gradient(circle at 40% 40%, rgba(70, 86, 140, 0.7), rgba(28, 36, 64, 0.2) 48%, transparent 72%);
+                --blob-c: radial-gradient(circle at 45% 45%, rgba(120, 86, 36, 0.45), rgba(48, 32, 16, 0.12) 50%, transparent 72%);
             }
         }
 
@@ -219,6 +228,48 @@
         button:focus-visible {
             outline: 2px solid var(--teal);
             outline-offset: 3px;
+        }
+
+        .ambient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            transform: translateZ(0);
+        }
+
+        .blob-a {
+            width: min(46vw, 560px);
+            height: min(46vw, 560px);
+            background: var(--blob-a);
+            top: -8%;
+            left: -6%;
+            animation: drift 48s ease-in-out infinite;
+        }
+
+        .blob-b {
+            width: min(38vw, 460px);
+            height: min(38vw, 460px);
+            background: var(--blob-b);
+            top: 6%;
+            right: -8%;
+            animation: drift 56s ease-in-out infinite reverse;
+        }
+
+        .blob-c {
+            width: min(42vw, 520px);
+            height: min(34vw, 420px);
+            background: var(--blob-c);
+            bottom: -6%;
+            left: 28%;
+            animation: drift 62s ease-in-out infinite;
         }
 
         .page {
@@ -943,6 +994,11 @@
 
         footer a { color: var(--teal); font-weight: 700; }
 
+        @keyframes drift {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(2.5%, -1.5%, 0); }
+        }
+
         @media (max-width: 980px) {
             .hero, .card-grid, .split, .prof-grid { grid-template-columns: minmax(0, 1fr); }
             .portrait-wrap { justify-self: start; }
@@ -965,6 +1021,9 @@
                 padding: 10px 12px 10px 16px;
             }
             .logo { font-size: 1.05rem; }
+            .blob { filter: blur(52px); }
+            .blob-a, .blob-b { width: 240px; height: 240px; }
+            .blob-c { width: 280px; height: 200px; left: 8%; }
             .hero { padding-top: 28px; }
             h1 { font-size: clamp(1.85rem, 7vw, 2.2rem); }
             .portrait-wrap { width: min(100%, 280px); }
@@ -1015,7 +1074,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .orbit { animation: none; }
+            .blob, .orbit { animation: none; }
             .socials a:hover, .visit:hover { transform: none; }
         }
 
@@ -1025,6 +1084,11 @@
     </style>
 </head>
 <body>
+    <div class="ambient" aria-hidden="true">
+        <span class="blob blob-a"></span>
+        <span class="blob blob-b"></span>
+        <span class="blob blob-c"></span>
+    </div>
     <div class="page">
         <header class="site-header glass">
             <a class="logo" href="#about">Ikenna<span>.cloud</span></a>
