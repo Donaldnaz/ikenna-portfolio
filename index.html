@@ -76,6 +76,10 @@
             --toggle-bg: #ffffff;
             --toggle-border: rgba(22, 32, 51, 0.1);
             --toggle-fg: #162033;
+            --blob-a: #9ed9d2;
+            --blob-b: #c9d4f0;
+            --blob-c: #f0d4ae;
+            --blob-d: #9ed9d2;
         }
 
         html[data-theme="dark"] {
@@ -127,6 +131,10 @@
             --toggle-bg: #161d27;
             --toggle-border: rgba(232, 238, 246, 0.12);
             --toggle-fg: #e8eef6;
+            --blob-a: #1c6f68;
+            --blob-b: #2a3a66;
+            --blob-c: #6a4a22;
+            --blob-d: #1c6f68;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -179,6 +187,10 @@
                 --toggle-bg: #161d27;
                 --toggle-border: rgba(232, 238, 246, 0.12);
                 --toggle-fg: #e8eef6;
+                --blob-a: #1c6f68;
+                --blob-b: #2a3a66;
+                --blob-c: #6a4a22;
+                --blob-d: #1c6f68;
             }
         }
 
@@ -190,6 +202,7 @@
         }
 
         body {
+            position: relative;
             margin: 0;
             min-height: 100vh;
             color: var(--ink);
@@ -212,6 +225,57 @@
         button:focus-visible {
             outline: 2px solid var(--teal);
             outline-offset: 3px;
+        }
+
+        .ambient {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            overflow: visible;
+        }
+
+        .blob path { fill: currentColor; }
+
+        .blob-a {
+            width: min(48vw, 540px);
+            height: auto;
+            color: var(--blob-a);
+            top: -120px;
+            left: -160px;
+            animation: bounce-a 7s ease-in-out infinite;
+        }
+
+        .blob-b {
+            width: min(42vw, 480px);
+            height: auto;
+            color: var(--blob-b);
+            top: -80px;
+            right: -140px;
+            animation: bounce-b 8.5s ease-in-out infinite;
+        }
+
+        .blob-c {
+            width: min(40vw, 460px);
+            height: auto;
+            color: var(--blob-c);
+            top: 38%;
+            right: -110px;
+            animation: bounce-c 6.4s ease-in-out infinite;
+        }
+
+        .blob-d {
+            width: min(44vw, 500px);
+            height: auto;
+            color: var(--blob-d);
+            left: -140px;
+            bottom: -80px;
+            animation: bounce-d 9s ease-in-out infinite;
         }
 
         .page {
@@ -264,17 +328,21 @@
         }
 
         .logo {
-            min-width: 0;
-            font-family: var(--sans);
-            font-weight: 680;
-            font-size: 1.25rem;
-            letter-spacing: -0.03em;
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            flex: none;
+            border-radius: 12px;
+            color: var(--teal);
             text-decoration: none;
-            color: var(--ink);
-            overflow-wrap: anywhere;
         }
 
-        .logo span { color: var(--teal); }
+        .logo svg {
+            display: block;
+            width: 26px;
+            height: 26px;
+        }
 
         .header-actions {
             display: flex;
@@ -945,7 +1013,12 @@
                 gap: 10px;
                 padding: 10px 12px 10px 16px;
             }
-            .logo { font-size: 1.05rem; }
+            .logo { width: 36px; height: 36px; }
+            .logo svg { width: 24px; height: 24px; }
+            .blob-a { width: 230px; top: -60px; left: -120px; }
+            .blob-b { width: 210px; top: -20px; right: -110px; }
+            .blob-c { width: 200px; top: 48%; right: -100px; bottom: auto; left: auto; }
+            .blob-d { width: 210px; left: -110px; bottom: -50px; }
             .role-top { flex-direction: column; align-items: flex-start; gap: 10px; }
             .role-top h3 { flex-basis: auto; width: 100%; font-size: 1.22rem; }
             .when { margin-top: 0; min-width: 0; white-space: normal; }
@@ -954,6 +1027,38 @@
         @media (max-width: 980px) {
             .hero, .card-grid, .split, .prof-grid { grid-template-columns: minmax(0, 1fr); }
             .portrait-wrap { justify-self: center; }
+        }
+
+        @keyframes bounce-a {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(-8deg) scale(1, 1); }
+            32% { transform: translate3d(16px, -26px, 0) rotate(8deg) scale(0.97, 1.05); }
+            48% { transform: translate3d(8px, 6px, 0) rotate(2deg) scale(1.06, 0.92); }
+            64% { transform: translate3d(12px, -12px, 0) rotate(5deg) scale(0.98, 1.03); }
+            78% { transform: translate3d(4px, 2px, 0) rotate(-2deg) scale(1.02, 0.97); }
+        }
+
+        @keyframes bounce-b {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg) scale(1, 1); }
+            36% { transform: translate3d(-14px, -24px, 0) rotate(-10deg) scale(0.97, 1.05); }
+            52% { transform: translate3d(-6px, 6px, 0) rotate(-2deg) scale(1.06, 0.92); }
+            68% { transform: translate3d(-10px, -10px, 0) rotate(-6deg) scale(0.98, 1.03); }
+            82% { transform: translate3d(-3px, 2px, 0) rotate(2deg) scale(1.02, 0.97); }
+        }
+
+        @keyframes bounce-c {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1); }
+            28% { transform: translate3d(12px, -28px, 0) rotate(12deg) scale(0.96, 1.05); }
+            46% { transform: translate3d(4px, 7px, 0) rotate(3deg) scale(1.06, 0.92); }
+            60% { transform: translate3d(8px, -12px, 0) rotate(7deg) scale(0.98, 1.03); }
+            76% { transform: translate3d(2px, 2px, 0) rotate(-2deg) scale(1.02, 0.97); }
+        }
+
+        @keyframes bounce-d {
+            0%, 100% { transform: translate3d(0, 0, 0) rotate(4deg) scale(1, 1); }
+            34% { transform: translate3d(18px, -22px, 0) rotate(-8deg) scale(0.97, 1.05); }
+            50% { transform: translate3d(8px, 6px, 0) rotate(0deg) scale(1.06, 0.92); }
+            66% { transform: translate3d(12px, -10px, 0) rotate(-4deg) scale(0.98, 1.03); }
+            80% { transform: translate3d(4px, 2px, 0) rotate(2deg) scale(1.02, 0.97); }
         }
 
         @media (max-width: 900px) {
@@ -1013,6 +1118,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
+            .blob { animation: none; }
             .socials a:hover, .visit:hover { transform: none; }
         }
 
@@ -1022,9 +1128,27 @@
     </style>
 </head>
 <body>
+    <div class="ambient" aria-hidden="true">
+        <svg class="blob blob-a" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M46.8,-18.9C50,-5.2,34.8,10.9,19,21.3C3.1,31.6,-13.3,36.3,-31.7,26.9C-50.1,17.5,-70.5,-6,-65.5,-22.1C-60.6,-38.2,-30.3,-46.8,-4.3,-45.4C21.8,-44,43.5,-32.6,46.8,-18.9Z" transform="translate(100 100)" />
+        </svg>
+        <svg class="blob blob-b" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M39.5,-22.4C51.2,-8.1,60.6,8.7,55.4,23.4C50.2,38.1,30.4,50.7,10.1,52.8C-10.2,54.9,-30.9,46.5,-43.8,32.1C-56.7,17.7,-61.8,-2.7,-55.4,-18.6C-49,-34.5,-31.1,-45.9,-14.4,-46.8C2.3,-47.7,27.8,-36.7,39.5,-22.4Z" transform="translate(100 100)" />
+        </svg>
+        <svg class="blob blob-c" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M44.2,-31.6C55.7,-18.4,62.4,-1.2,58.1,14.1C53.8,29.4,38.5,42.8,21.2,49.2C3.9,55.6,-15.4,55,-31.2,46.4C-47,37.8,-59.3,21.2,-61.4,3.2C-63.5,-14.8,-55.4,-34.2,-42.1,-46.4C-28.8,-58.6,-10.3,-63.6,3.4,-58.2C17.1,-52.8,32.7,-44.8,44.2,-31.6Z" transform="translate(100 100)" />
+        </svg>
+        <svg class="blob blob-d" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M41.3,-27.8C52.6,-15.2,60.1,0.6,56.8,15.4C53.5,30.2,39.4,44,23.2,50.6C7,57.2,-11.3,56.6,-27.2,49.2C-43.1,41.8,-56.6,27.6,-61.4,10.6C-66.2,-6.4,-62.3,-26.2,-50.4,-38.4C-38.5,-50.6,-18.6,-55.2,-1.2,-53.8C16.2,-52.4,30,-40.4,41.3,-27.8Z" transform="translate(100 100)" />
+        </svg>
+    </div>
     <div class="page">
         <header class="site-header glass">
-            <a class="logo" href="#about">Ikenna<span>.cloud</span></a>
+            <a class="logo" href="#about" aria-label="Ikenna.cloud">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="currentColor" d="M17.6 18.5H8.2a4.2 4.2 0 0 1-.5-8.3 5.2 5.2 0 0 1 9.9-1A3.6 3.6 0 0 1 17.6 18.5z"/>
+                </svg>
+            </a>
             <div class="header-actions">
                 <nav class="nav-links" aria-label="Primary">
                     <a href="#about">About</a>
@@ -1321,7 +1445,7 @@
         </main>
 
         <footer class="glass">
-            <span>© 2026 Ikenna Anasieze · Ikenna.cloud</span>
+            <span>© 2026 Ikenna Anasieze</span>
             <a href="mailto:ikenna.anasieze@gmail.com">ikenna.anasieze@gmail.com</a>
         </footer>
     </div>
