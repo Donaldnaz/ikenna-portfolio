@@ -42,42 +42,40 @@
             --mark: #5c6b82;
             --mark-opacity: 0.34;
             color-scheme: light;
-            --surface: #e7eef2;
-            --bg: #e7eef2;
-            --raised: 8px 8px 16px rgba(163, 177, 198, 0.55), -8px -8px 16px rgba(255, 255, 255, 0.9);
-            --raised-sm: 4px 4px 8px rgba(163, 177, 198, 0.5), -4px -4px 8px rgba(255, 255, 255, 0.85);
-            --pressed: inset 4px 4px 8px rgba(163, 177, 198, 0.45), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            --surface: #ffffff;
+            --bg:
+                radial-gradient(880px 420px at 0% -8%, rgba(20, 152, 143, 0.09), transparent 58%),
+                #f4f6f8;
+            --shadow: 0 1px 2px rgba(22, 32, 51, 0.04), 0 12px 32px rgba(22, 32, 51, 0.06);
             --selection-bg: #0e6b66;
             --selection-fg: #fff;
-            --header-bg: var(--surface);
-            --nav-hover: var(--surface);
-            --menu-summary-bg: var(--surface);
-            --menu-summary-border: transparent;
-            --menu-summary-bg-mobile: var(--surface);
-            --menu-summary-border-mobile: transparent;
-            --menu-bg: var(--surface);
-            --glass-bg: var(--surface);
-            --glass-fallback: var(--surface);
-            --chip-bg: var(--surface);
-            --chip-border: transparent;
-            --chip-shadow: var(--raised-sm);
-            --tag-bg: var(--surface);
-            --visit-bg: #14988f;
+            --header-bg: #ffffff;
+            --nav-hover: rgba(14, 107, 102, 0.06);
+            --menu-summary-bg: #ffffff;
+            --menu-summary-border: rgba(22, 32, 51, 0.1);
+            --menu-summary-bg-mobile: #ffffff;
+            --menu-summary-border-mobile: rgba(22, 32, 51, 0.1);
+            --menu-bg: #ffffff;
+            --glass-bg: #ffffff;
+            --glass-fallback: #ffffff;
+            --line: rgba(22, 32, 51, 0.08);
+            --chip-bg: #f4f7f8;
+            --chip-border: rgba(22, 32, 51, 0.08);
+            --chip-shadow: none;
+            --tag-bg: rgba(20, 152, 143, 0.1);
+            --visit-bg: #0e6b66;
             --visit-fg: #fff;
-            --visit-shadow: 6px 6px 12px rgba(14, 107, 102, 0.38), -4px -4px 10px rgba(255, 255, 255, 0.55);
-            --portrait-bg: var(--surface);
-            --orbit-circle: #8aabb0;
-            --orbit-square: #d5d3dc;
+            --visit-shadow: 0 8px 18px rgba(14, 107, 102, 0.22);
+            --portrait-bg: #ffffff;
             --divider: rgba(22, 32, 51, 0.08);
-            --level-bg: var(--surface);
+            --level-bg: rgba(20, 152, 143, 0.1);
             --mark-fg: #7c4a03;
-            --mark-bg: var(--surface);
+            --mark-bg: #fff4e5;
             --mark-azure-fg: #1d4ed8;
-            --mark-azure-bg: var(--surface);
-            --toggle-bg: var(--surface);
-            --toggle-border: transparent;
+            --mark-azure-bg: #eef4ff;
+            --toggle-bg: #ffffff;
+            --toggle-border: rgba(22, 32, 51, 0.1);
             --toggle-fg: #162033;
-            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 152, 143, 0.12), transparent 68%);
         }
 
         html[data-theme="dark"] {
@@ -90,49 +88,45 @@
             --violet: #d5deea;
             --mark: #b7c8d8;
             --mark-opacity: 0.4;
-            --surface: #1a222c;
-            --bg: #1a222c;
-            --raised: 8px 8px 16px rgba(0, 0, 0, 0.45), -6px -6px 14px rgba(255, 255, 255, 0.04);
-            --raised-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -3px -3px 8px rgba(255, 255, 255, 0.04);
-            --pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.45), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
+            --surface: #161d27;
+            --bg:
+                radial-gradient(880px 420px at 0% -8%, rgba(20, 152, 143, 0.16), transparent 55%),
+                #0e141b;
+            --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
             --selection-bg: #14988f;
             --selection-fg: #041412;
-            --header-bg: var(--surface);
-            --nav-hover: var(--surface);
-            --menu-summary-bg: var(--surface);
-            --menu-summary-border: transparent;
-            --menu-summary-bg-mobile: var(--surface);
-            --menu-summary-border-mobile: transparent;
-            --menu-bg: var(--surface);
-            --glass: var(--surface);
-            --glass-strong: var(--surface);
-            --line: transparent;
+            --header-bg: #161d27;
+            --nav-hover: rgba(255, 255, 255, 0.06);
+            --menu-summary-bg: #161d27;
+            --menu-summary-border: rgba(232, 238, 246, 0.12);
+            --menu-summary-bg-mobile: #161d27;
+            --menu-summary-border-mobile: rgba(232, 238, 246, 0.12);
+            --menu-bg: #161d27;
+            --glass: #161d27;
+            --glass-strong: #161d27;
+            --line: rgba(232, 238, 246, 0.1);
             --line-ink: rgba(232, 238, 246, 0.1);
-            --shadow: var(--raised);
-            --shadow-soft: var(--raised-sm);
-            --inset: var(--pressed);
-            --glass-bg: var(--surface);
-            --glass-fallback: var(--surface);
-            --chip-bg: var(--surface);
-            --chip-border: transparent;
-            --chip-shadow: var(--raised-sm);
-            --tag-bg: var(--surface);
+            --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.24);
+            --inset: none;
+            --glass-bg: #161d27;
+            --glass-fallback: #161d27;
+            --chip-bg: rgba(255, 255, 255, 0.05);
+            --chip-border: rgba(232, 238, 246, 0.1);
+            --chip-shadow: none;
+            --tag-bg: rgba(126, 239, 230, 0.12);
             --visit-bg: #14988f;
             --visit-fg: #041412;
-            --visit-shadow: 6px 6px 14px rgba(0, 0, 0, 0.45), -4px -4px 10px rgba(255, 255, 255, 0.05);
-            --portrait-bg: var(--surface);
-            --orbit-circle: #6e8e96;
-            --orbit-square: #3a4454;
+            --visit-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+            --portrait-bg: #161d27;
             --divider: rgba(232, 238, 246, 0.12);
-            --level-bg: var(--surface);
+            --level-bg: rgba(126, 239, 230, 0.12);
             --mark-fg: #f0c56a;
-            --mark-bg: var(--surface);
+            --mark-bg: #3a2e14;
             --mark-azure-fg: #bfdbfe;
-            --mark-azure-bg: var(--surface);
-            --toggle-bg: var(--surface);
-            --toggle-border: transparent;
+            --mark-azure-bg: #172554;
+            --toggle-bg: #161d27;
+            --toggle-border: rgba(232, 238, 246, 0.12);
             --toggle-fg: #e8eef6;
-            --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.14), transparent 68%);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -146,49 +140,45 @@
                 --violet: #d5deea;
                 --mark: #b7c8d8;
                 --mark-opacity: 0.4;
-                --surface: #1a222c;
-                --bg: #1a222c;
-                --raised: 8px 8px 16px rgba(0, 0, 0, 0.45), -6px -6px 14px rgba(255, 255, 255, 0.04);
-                --raised-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -3px -3px 8px rgba(255, 255, 255, 0.04);
-                --pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.45), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
+                --surface: #161d27;
+                --bg:
+                    radial-gradient(880px 420px at 0% -8%, rgba(20, 152, 143, 0.16), transparent 55%),
+                    #0e141b;
+                --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
                 --selection-bg: #14988f;
                 --selection-fg: #041412;
-                --header-bg: var(--surface);
-                --nav-hover: var(--surface);
-                --menu-summary-bg: var(--surface);
-                --menu-summary-border: transparent;
-                --menu-summary-bg-mobile: var(--surface);
-                --menu-summary-border-mobile: transparent;
-                --menu-bg: var(--surface);
-                --glass: var(--surface);
-                --glass-strong: var(--surface);
-                --line: transparent;
+                --header-bg: #161d27;
+                --nav-hover: rgba(255, 255, 255, 0.06);
+                --menu-summary-bg: #161d27;
+                --menu-summary-border: rgba(232, 238, 246, 0.12);
+                --menu-summary-bg-mobile: #161d27;
+                --menu-summary-border-mobile: rgba(232, 238, 246, 0.12);
+                --menu-bg: #161d27;
+                --glass: #161d27;
+                --glass-strong: #161d27;
+                --line: rgba(232, 238, 246, 0.1);
                 --line-ink: rgba(232, 238, 246, 0.1);
-                --shadow: var(--raised);
-                --shadow-soft: var(--raised-sm);
-                --inset: var(--pressed);
-                --glass-bg: var(--surface);
-                --glass-fallback: var(--surface);
-                --chip-bg: var(--surface);
-                --chip-border: transparent;
-                --chip-shadow: var(--raised-sm);
-                --tag-bg: var(--surface);
+                --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.24);
+                --inset: none;
+                --glass-bg: #161d27;
+                --glass-fallback: #161d27;
+                --chip-bg: rgba(255, 255, 255, 0.05);
+                --chip-border: rgba(232, 238, 246, 0.1);
+                --chip-shadow: none;
+                --tag-bg: rgba(126, 239, 230, 0.12);
                 --visit-bg: #14988f;
                 --visit-fg: #041412;
-                --visit-shadow: 6px 6px 14px rgba(0, 0, 0, 0.45), -4px -4px 10px rgba(255, 255, 255, 0.05);
-                --portrait-bg: var(--surface);
-                --orbit-circle: #6e8e96;
-                --orbit-square: #3a4454;
+                --visit-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+                --portrait-bg: #161d27;
                 --divider: rgba(232, 238, 246, 0.12);
-                --level-bg: var(--surface);
+                --level-bg: rgba(126, 239, 230, 0.12);
                 --mark-fg: #f0c56a;
-                --mark-bg: var(--surface);
+                --mark-bg: #3a2e14;
                 --mark-azure-fg: #bfdbfe;
-                --mark-azure-bg: var(--surface);
-                --toggle-bg: var(--surface);
-                --toggle-border: transparent;
+                --mark-azure-bg: #172554;
+                --toggle-bg: #161d27;
+                --toggle-border: rgba(232, 238, 246, 0.12);
                 --toggle-fg: #e8eef6;
-                --field-light: radial-gradient(circle at 40% 40%, rgba(20, 168, 156, 0.14), transparent 68%);
             }
         }
 
@@ -222,25 +212,6 @@
         button:focus-visible {
             outline: 2px solid var(--teal);
             outline-offset: 3px;
-        }
-
-        .ambient {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .field-light {
-            position: absolute;
-            width: min(72vw, 840px);
-            height: min(72vw, 840px);
-            top: -18%;
-            left: -14%;
-            border-radius: 50%;
-            background: var(--field-light);
-            filter: blur(40px);
         }
 
         .page {
@@ -324,7 +295,7 @@
             border-radius: 999px;
             border: 1px solid var(--toggle-border);
             background: var(--toggle-bg);
-            box-shadow: var(--raised-sm);
+            box-shadow: none;
             color: var(--toggle-fg);
             font: inherit;
             font-size: 0.86rem;
@@ -379,7 +350,7 @@
         .nav-menu a:hover {
             color: var(--ink);
             background: var(--nav-hover);
-            box-shadow: var(--pressed);
+            box-shadow: none;
         }
 
         .nav-menu { display: none; position: relative; }
@@ -393,7 +364,7 @@
             border-radius: 999px;
             background: var(--menu-summary-bg);
             border: 1px solid var(--menu-summary-border);
-            box-shadow: var(--raised-sm);
+            box-shadow: none;
         }
 
         .nav-menu summary::-webkit-details-marker { display: none; }
@@ -412,8 +383,8 @@
 
         .glass {
             background: var(--surface);
-            border: none;
-            box-shadow: var(--raised);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
         }
 
         .hero {
@@ -520,14 +491,15 @@
         .portrait-wrap {
             position: relative;
             justify-self: end;
-            width: min(100%, 320px);
-            border-radius: 36px;
-            box-shadow: var(--raised);
+            align-self: center;
+            width: min(100%, 220px);
+            border-radius: 50%;
+            box-shadow: var(--shadow);
         }
 
         .portrait {
             aspect-ratio: 1;
-            border-radius: 36px;
+            border-radius: 50%;
             display: grid;
             place-items: center;
             overflow: hidden;
@@ -624,7 +596,7 @@
             padding: 6px 12px;
             border-radius: 999px;
             background: var(--level-bg);
-            box-shadow: var(--pressed);
+            box-shadow: none;
             color: var(--teal);
             font-size: 0.78rem;
             font-weight: 800;
@@ -747,7 +719,7 @@
             padding: 5px 11px;
             border-radius: 999px;
             background: var(--level-bg);
-            box-shadow: var(--pressed);
+            box-shadow: none;
             color: var(--teal);
             font-size: 0.78rem;
             font-weight: 750;
@@ -839,7 +811,7 @@
             padding: 4px 8px;
             border-radius: 999px;
             background: var(--tag-bg);
-            box-shadow: var(--pressed);
+            box-shadow: none;
             color: var(--teal);
             font-family: var(--sans);
             font-size: 0.72rem;
@@ -931,13 +903,13 @@
             letter-spacing: 0.04em;
             color: var(--mark-fg);
             background: var(--mark-bg);
-            box-shadow: var(--raised-sm);
+            box-shadow: none;
         }
 
         .mark.azure {
             color: var(--mark-azure-fg);
             background: var(--mark-azure-bg);
-            box-shadow: var(--raised-sm);
+            box-shadow: none;
         }
 
         .edu-card { padding: 20px 24px; border-radius: 20px; margin-bottom: 12px; }
@@ -986,10 +958,9 @@
 
         @media (max-width: 900px) {
             .page { width: min(1120px, calc(100% - 32px)); }
-            .field-light { width: 320px; height: 320px; }
             .hero { padding-top: 28px; }
             h1 { font-size: clamp(1.85rem, 7vw, 2.2rem); }
-            .portrait-wrap { width: min(100%, 280px); }
+            .portrait-wrap { width: min(100%, 180px); }
             .card h3 { font-size: 1.28rem; }
             .card, .role-card { padding: 18px; }
             .cred-card, .edu-card { padding: 16px 18px; }
@@ -1051,9 +1022,6 @@
     </style>
 </head>
 <body>
-    <div class="ambient" aria-hidden="true">
-        <span class="field-light"></span>
-    </div>
     <div class="page">
         <header class="site-header glass">
             <a class="logo" href="#about">Ikenna<span>.cloud</span></a>
